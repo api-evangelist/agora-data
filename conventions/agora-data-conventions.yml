@@ -1,0 +1,86 @@
+generated: '2026-08-06'
+method: derived
+source: >-
+  openapi/agora-data-openapi-original.json plus live unauthenticated probes of
+  api.agoradata.com
+notes: >-
+  Cross-cutting request/response semantics for the Agora Data loan-import API. Everything
+  here is read off the published spec or observed on the wire. Where a convention is
+  ABSENT that is recorded as absent — this API documents no idempotency contract, no
+  pagination, no rate-limit signaling and no request-id tracing.
+authentication:
+  style: mixed
+  detail: >-
+    API key on /api/v1/*, Authorization header on /providers/*, OAuth authorization-code at
+    /oauth/authorize + /oauth/token, username/password at /login/authenticate, an
+    x-agora-files-key shared secret on the webhook receivers, and an api_token query
+    parameter on the HomeNet aggregation trigger. None of it is declared in the OpenAPI.
+  see: authentication/agora-data-authentication.yml
+idempotency:
+  supported: false
+  detail: >-
+    No Idempotency-Key header or equivalent appears in the OpenAPI, and none is documented.
+    This matters here more than on most APIs: the core operations are multipart loan-file
+    imports (POST /import/... and POST /api/v1/import/...), where a retried upload after a
+    timeout has no declared dedupe key. The only correlation handle is the
+    api_activity_uuid returned by an import and read back via GET /status/{api_activity_uuid}
+    or GET /api/v1/uploads/{api_activity_uuid}, which is an after-the-fact status lookup,
+    not an idempotency guarantee.
+pagination:
+  supported: false
+  detail: >-
+    GET /api/v1/loans ("Get Loans By Status") takes only account_uuid_and_id and declares no
+    limit, offset, cursor or page parameter, and no paging fields in the response.
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: >-
+    Two parallel surfaces are published side by side: a versioned /api/v1/* tree and an
+    unversioned legacy tree (/import/*, /status/*, /loans/*) that mirrors most of the same
+    operations. Both are live in the same spec. No version header, no date-based versioning,
+    no deprecation marker on the unversioned duplicates.
+  see: lifecycle/agora-data-lifecycle.yml
+tenancy:
+  parameter: account_uuid_and_id
+  location: query
+  required: false
+  applies_to_operations: 13
+  detail: >-
+    The dominant cross-cutting parameter. Present on almost every import, status, loan and
+    provider operation as an OPTIONAL, untyped query parameter (no schema type in the spec)
+    that selects the account context. Being optional and untyped on a tenant selector is the
+    single most consequential contract weakness in this spec.
+request_tracing:
+  supported: false
+  detail: No request-id / correlation-id header is declared or documented.
+rate_limiting:
+  documented: false
+  detail: >-
+    No rate-limit headers are declared in the spec and no rate-limit policy is published.
+    Note portal.agoradata.com returned HTTP 429 to repeated anonymous probes, so throttling
+    exists at the edge but is not part of the published contract.
+error_envelope:
+  media_type: application/json
+  shape: '{"detail": <string | ValidationError[]>}'
+  rfc9457: false
+  see: errors/agora-data-problem-types.yml
+content_types:
+  request:
+  - multipart/form-data (file imports, field name `dataFile`)
+  - application/json (auth + webhook operations)
+  response:
+  - application/json
+  detail: >-
+    Every import operation additionally declares a REQUIRED `content-type` header parameter
+    explicitly in the spec, which is unusual — content type is normally handled by the
+    requestBody media type rather than a hand-declared header parameter.
+async_model:
+  style: submit-then-poll
+  detail: >-
+    Imports are asynchronous. A file POST returns an api_activity_uuid; the caller polls
+    GET /api/v1/uploads/{api_activity_uuid} (or the legacy GET /status/{api_activity_uuid})
+    for completion. No callback, no push notification for import completion, and no polling
+    interval or terminal-state vocabulary is published.
+webhooks:
+  direction: inbound
+  see: asyncapi/agora-data-webhooks.yml

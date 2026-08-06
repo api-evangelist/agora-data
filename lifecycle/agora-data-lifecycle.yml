@@ -1,0 +1,75 @@
+generated: '2026-08-06'
+method: derived
+source: >-
+  openapi/agora-data-openapi-original.json plus searches of agoradata.com and its sitemap
+  for status, SLA, changelog and deprecation pages
+versioning:
+  scheme: uri-path
+  current: v1
+  base: https://api.agoradata.com/api/v1
+  spec_info_version: 0.1.0
+  detail: >-
+    The OpenAPI info block is the FastAPI default (title "FastAPI", version "0.1.0") and has
+    never been customised, so the document carries no meaningful product version. The only
+    real version signal is the /api/v1 path prefix.
+parallel_surfaces:
+  detail: >-
+    An unversioned legacy tree is published alongside /api/v1 and duplicates most of it. No
+    operation in either tree is marked deprecated.
+  versioned:
+  - /api/v1/import/{dms_vendor}/{upload_subtype}
+  - /api/v1/import/priority/{dms_vendor}/{upload_subtype}
+  - /api/v1/uploads/{api_activity_uuid}
+  - /api/v1/loans
+  - /api/v1/loans/{rest_of_path}
+  unversioned_legacy:
+  - /import/{dms_vendor}/{upload_subtype}
+  - /import/priority/{dms_vendor}/{upload_subtype}
+  - /status/{api_activity_uuid}
+  - /loans/{rest_of_path}
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecated_operations: []
+  detail: >-
+    No deprecation policy page was found, no operation carries `deprecated: true`, and no
+    RFC 8594 Sunset/Deprecation header support is documented.
+status_page:
+  url: null
+  found: false
+  detail: >-
+    No status page. status.agoradata.com does not resolve, and no status/uptime page is
+    linked from the site or present in the sitemap. The API does expose an anonymous
+    liveness endpoint, GET https://api.agoradata.com/health, which returns "ok" with HTTP
+    200 — a health check, not a published status page.
+  health_endpoint:
+    url: https://api.agoradata.com/health
+    operation: status_endpoint_health_get
+    http_status: 200
+    body: '"ok"'
+    fetched: '2026-08-06'
+sla:
+  url: null
+  uptime_target: null
+  published: false
+changelog:
+  url: null
+  published: false
+  detail: >-
+    No dated API changelog. agoradata.com/revenews/ is a company news/press blog, not a
+    release log, and is wired as Blog rather than ChangeLog.
+support:
+  help_center: https://support.agoradata.com/hc/en-us
+  note: >-
+    The help center carries the DMS integration articles but sits behind a Cloudflare bot
+    challenge (HTTP 403 to non-browser clients), so its content could not be read.
+x-evidence:
+  fetched: '2026-08-06'
+  probes:
+  - url: https://api.agoradata.com/health
+    status: 200
+  - url: https://agoradata.com/sitemap_index.xml
+    status: 200
+  - url: https://support.agoradata.com/hc/en-us
+    status: 403

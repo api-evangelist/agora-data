@@ -1,0 +1,79 @@
+generated: '2026-08-06'
+method: derived
+source: >-
+  openapi/agora-data-openapi-original.json,
+  well-known/agora-data-openid-configuration.json, and live probes of api.agoradata.com
+notes: >-
+  Cross-cutting standards conformance. Derived, not claimed by the provider — Agora Data
+  publishes no compliance or certification page, so no `Compliance` pointer is emitted.
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: >-
+    api.agoradata.com/openapi.json declares "openapi": "3.1.0" and parses; 21 operations
+    across 21 paths.
+- id: json-schema-2020-12
+  conforms: true
+  evidence: OpenAPI 3.1 uses JSON Schema 2020-12 for components.schemas (11 schemas defined).
+- id: oauth2
+  conforms: partial
+  evidence: >-
+    The API hosts /oauth/authorize and /oauth/token and returns access_token / refresh_token
+    / expires_in / token_type / scope, but declares no oauth2 securityScheme in the spec and
+    publishes no scope vocabulary or grant-type documentation.
+- id: oidc
+  conforms: true
+  scope: AgoraPortal only
+  evidence: >-
+    The Auth0 tenant agora-data.us.auth0.com serves a complete OIDC discovery document
+    (issuer, authorization/token/userinfo/jwks endpoints, PKCE S256). AgoraPortal redirects
+    to it. Does not cover the loan-import API.
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  scope: Auth0 tenant only
+  evidence: >-
+    https://agora-data.us.auth0.com/.well-known/oauth-authorization-server returns 200.
+    api.agoradata.com returns 404 for the same path.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors use the FastAPI default {"detail": ...} envelope as application/json; no
+    application/problem+json, no type URI, no title/instance members.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on both agoradata.com and api.agoradata.com.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset/Deprecation header support documented; no deprecated operations in spec.
+- id: rfc8615-well-known-uris
+  conforms: partial
+  evidence: >-
+    Only the Auth0 identity tenant serves /.well-known documents. Neither the API host nor
+    the marketing host publishes any.
+- id: a2a-agent-card
+  conforms: false
+  evidence: >-
+    /.well-known/agent-card.json and /.well-known/agent.json return 404 on api.agoradata.com
+    and agoradata.com.
+- id: asyncapi
+  conforms: false
+  evidence: >-
+    No AsyncAPI document published. The event surface is two inbound webhook receivers
+    declared in the OpenAPI; see asyncapi/agora-data-webhooks.yml.
+- id: json-api
+  conforms: false
+  evidence: Responses are plain JSON; no JSON:API document structure.
+- id: odata
+  conforms: false
+- id: pagination
+  conforms: false
+  evidence: No paging parameters or response envelope on the collection operation GET /api/v1/loans.
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key header or equivalent on any write operation, including file imports.
+compliance_program:
+  published: false
+  detail: >-
+    No trust center, SOC 2, ISO 27001, PCI DSS or GLBA/FCRA compliance page was found on
+    agoradata.com; trust.agoradata.com does not resolve. Notable for a consumer-lending
+    fintech handling non-prime borrower loan data.

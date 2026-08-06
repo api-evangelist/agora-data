@@ -1,0 +1,77 @@
+generated: '2026-08-06'
+method: derived
+source: >-
+  openapi/agora-data-openapi-original.json (declared responses) plus live unauthenticated
+  probes of api.agoradata.com for the undeclared statuses
+format: fastapi-detail
+notes: >-
+  This API does NOT use RFC 9457 problem+json. Every error is the FastAPI default envelope,
+  a JSON object with a single `detail` key served as application/json. For 422 the `detail`
+  is an array of ValidationError objects {loc, msg, type}; for the auth and not-found cases
+  observed live it is a plain string. The OpenAPI declares only 200 and 422 on every
+  operation — the 400 and 404 responses the live API actually returns are undeclared, so a
+  generated client will not know about them.
+envelope:
+  media_type: application/json
+  shape: '{"detail": <string | ValidationError[]>}'
+  validation_error_fields: [loc, msg, type]
+  schema_refs:
+  - '#/components/schemas/HTTPValidationError'
+  - '#/components/schemas/ValidationError'
+problems:
+- status: 422
+  title: Validation Error
+  declared_in_spec: true
+  media_type: application/json
+  schema: '#/components/schemas/HTTPValidationError'
+  detail_shape: array of {loc, msg, type}
+  description: >-
+    Request failed schema validation — a missing/ill-typed path, query, header or
+    multipart body field.
+  applies_to: all operations except /health and POST /oauth/token
+- status: 400
+  title: Api Key is required
+  declared_in_spec: false
+  media_type: application/json
+  detail: Api Key is required
+  description: The API key credential was absent from the request.
+  remediation: >-
+    Supply the API key issued to your DMS integration. The header name is not published;
+    obtain it from Agora Data integration support.
+  observed:
+    url: https://api.agoradata.com/api/v1/loans
+    http_status: 400
+    fetched: '2026-08-06'
+  source_operations:
+  - get_loans_by_status_api_v1_loans_get
+  - return_import_format_api_v1_import_get
+- status: 400
+  title: Authorization header is required
+  declared_in_spec: false
+  media_type: application/json
+  detail: Authorization header is required
+  description: The provider passthrough surface was called without an Authorization header.
+  remediation: >-
+    Obtain an access token from POST /oauth/token and send it on the Authorization header.
+  observed:
+    url: https://api.agoradata.com/providers
+    http_status: 400
+    fetched: '2026-08-06'
+  source_operations:
+  - template_providers_get
+  - agora_endpoint_providers__provider_name___rest_of_path__get
+- status: 404
+  title: Not Found
+  declared_in_spec: false
+  media_type: application/json
+  detail: Not Found
+  description: No route matches the requested path.
+  observed:
+    url: https://api.agoradata.com/
+    http_status: 404
+    fetched: '2026-08-06'
+gaps:
+- No RFC 9457 application/problem+json; no `type` URI, no `title`, no `instance`.
+- No machine-readable error code vocabulary — callers must string-match on `detail`.
+- 400 and 404 are returned live but declared on no operation in the OpenAPI.
+- Auth failures are returned as 400 rather than 401/403.

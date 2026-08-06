@@ -1,0 +1,71 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/agora-data-openapi-original.json
+spec_type: Webhooks
+asyncapi_published: false
+notes: >-
+  Agora Data publishes no AsyncAPI document. Its event surface is two INBOUND webhook
+  receivers declared in the public OpenAPI: endpoints that partner dealer management systems
+  (iDMS and Auto Master) POST to when a loan data file is ready for Agora to collect. The
+  direction matters — Agora is the webhook CONSUMER here, not the publisher, so there is no
+  outbound event catalog for Agora's own customers to subscribe to. Nothing below is
+  invented; both receivers and their payload schema are declared in the spec.
+direction: inbound
+webhooks:
+- name: idms-file-delivered
+  path: /hooks/files/idms
+  method: POST
+  operation_id: idms_file_endpoint_hooks_files_idms_post
+  partner: iDMS
+  description: >-
+    Receiver for iDMS file-delivery notifications. The partner POSTs a FilesWebHookFormat
+    payload announcing that a loan data file is available at a path.
+  payload_schema: '#/components/schemas/FilesWebHookFormat'
+  authentication:
+    header: x-agora-files-key
+    required_in_spec: false
+    note: >-
+      Declared as an OPTIONAL header parameter. A shared-secret webhook verifier declared
+      optional is a security-relevant contract defect.
+- name: automaster-file-delivered
+  path: /hooks/files/autoMaster
+  method: POST
+  operation_id: auto_master_file_endpoint_hooks_files_autoMaster_post
+  partner: Auto Master Systems
+  description: >-
+    Receiver for Auto Master Systems file-delivery notifications. Same FilesWebHookFormat
+    payload as the iDMS receiver.
+  payload_schema: '#/components/schemas/FilesWebHookFormat'
+  authentication:
+    header: x-agora-files-key
+    required_in_spec: false
+payload:
+  schema: FilesWebHookFormat
+  required: [action, path, at]
+  fields:
+  - name: action
+    required: true
+    description: The file event being announced.
+  - name: path
+    required: true
+    description: Location of the delivered file.
+  - name: at
+    required: true
+    description: Timestamp of the event.
+  - name: destination
+    required: false
+    description: Optional delivery destination.
+  note: >-
+    The spec declares no enum for `action`, so the event vocabulary is not machine-readable.
+outbound_events:
+  published: false
+  detail: >-
+    No outbound webhooks, no event subscriptions, no streaming surface. Import completion is
+    discovered by polling GET /api/v1/uploads/{api_activity_uuid} or GET /status/{api_activity_uuid},
+    not by callback.
+gaps:
+- No AsyncAPI document.
+- No outbound event catalog for Agora's own API consumers.
+- No enum for the webhook `action` field.
+- Webhook shared-secret header declared optional rather than required.
+- No signature scheme (HMAC over body) documented — a static header key only.

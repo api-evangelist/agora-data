@@ -1,0 +1,132 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/agora-data-openapi-original.json
+notes: >-
+  Entity graph derived from the OpenAPI. This spec is thin on domain modelling: the 11
+  declared component schemas are auth envelopes, multipart bodies and validation errors —
+  none of the business objects (loan, portfolio, account, provider, upload) has a declared
+  schema. The entities below are inferred from PATH SEGMENTS and PARAMETER names, which is
+  the only evidence available; every response body is untyped (the spec declares
+  application/json with no schema on all 200 responses). Flagged as low confidence where
+  that is the case.
+entities:
+- name: Account
+  confidence: medium
+  identifier: account_uuid_and_id
+  identifier_location: query parameter
+  schema_declared: false
+  detail: >-
+    The tenant/context object. Appears as an optional, untyped query parameter on 13 of 21
+    operations. The compound name suggests a concatenated uuid+id value, but no format is
+    published.
+- name: Loan
+  confidence: medium
+  schema_declared: false
+  operations: [get_loans_by_status_api_v1_loans_get, delete_loans_api_v1_loans__rest_of_path__delete,
+    delete_loans_loans__rest_of_path__delete]
+  detail: >-
+    The core business object — a retail installment contract in a BHPH portfolio. Listable
+    by status and deletable, but the delete path is a catch-all `{rest_of_path}` rather than
+    a typed identifier, and no Loan schema is declared.
+- name: Upload
+  confidence: high
+  identifier: api_activity_uuid
+  identifier_location: path parameter
+  schema_declared: false
+  detail: >-
+    An import job. Created by any of the file-import operations, then polled for status.
+    api_activity_uuid is the correlation handle across the whole import lifecycle.
+  operations: [loan_upload_status_api_v1_uploads__api_activity_uuid__get, get_import_status_status__api_activity_uuid__get]
+- name: DmsVendor
+  confidence: high
+  identifier: dms_vendor
+  identifier_location: path parameter
+  schema_declared: false
+  enum_published: false
+  detail: >-
+    The dealer management system the loan file originates from. A free-string path segment
+    with no enum, so the set of supported DMS vendors is not machine-readable. Known partners
+    named in Agora's own announcements include Auto Master Systems, ABCoA Deal Pack,
+    AutoManager and DealerCenter; iDMS and autoMaster additionally appear as webhook paths.
+- name: UploadSubtype
+  confidence: high
+  identifier: upload_subtype
+  identifier_location: path parameter
+  enum_published: false
+  detail: Free-string classifier for the kind of file being imported. No enum published.
+- name: Provider
+  confidence: medium
+  identifier: provider_name
+  identifier_location: path parameter
+  schema_declared: false
+  operations: [template_providers_get, agora_endpoint_providers__provider_name___rest_of_path__get]
+  detail: >-
+    A third-party data provider reachable through a passthrough surface —
+    GET /providers/{provider_name}/{rest_of_path} proxies an arbitrary subpath to the named
+    provider. HomeNet appears as a concrete provider via the inventory aggregation endpoint.
+- name: ImportFormat
+  confidence: medium
+  schema_declared: false
+  operations: [return_import_format_api_v1_import_get]
+  detail: >-
+    The expected column/field layout for an import, returned by GET /api/v1/import. This is
+    effectively the loan data schema, served at runtime rather than published in the spec.
+- name: FileWebHookEvent
+  confidence: high
+  schema_declared: true
+  schema: '#/components/schemas/FilesWebHookFormat'
+  fields: [action, path, at, destination]
+  detail: The only business-domain object with a real declared schema.
+- name: Token
+  confidence: high
+  schema_declared: true
+  schemas: ['#/components/schemas/AccessTokenResponse', '#/components/schemas/TokenRequestResponse',
+    '#/components/schemas/AuthCodeResponse']
+  fields: [access_token, token_type, refresh_token, expires_in, scope, code, redirect_url]
+relationships:
+- from: Account
+  to: Loan
+  type: has_many
+  via: account_uuid_and_id
+  confidence: medium
+- from: Account
+  to: Upload
+  type: has_many
+  via: account_uuid_and_id
+  confidence: medium
+- from: Upload
+  to: Loan
+  type: has_many
+  via: imported file contents
+  confidence: medium
+  detail: An import job creates or updates the loans contained in the uploaded file.
+- from: Upload
+  to: DmsVendor
+  type: belongs_to
+  via: dms_vendor
+  confidence: high
+- from: Upload
+  to: UploadSubtype
+  type: belongs_to
+  via: upload_subtype
+  confidence: high
+- from: FileWebHookEvent
+  to: Upload
+  type: triggers
+  via: path
+  confidence: medium
+- from: Provider
+  to: Account
+  type: belongs_to
+  via: account_uuid_and_id
+  confidence: low
+coverage:
+  schemas_declared: 11
+  business_entities_with_declared_schema: 1
+  operations: 21
+  operations_with_typed_200_response: 0
+gaps:
+- No declared schema for Loan, Account, Upload, Provider or ImportFormat.
+- Every 200 response is application/json with no schema, so no response is typed.
+- dms_vendor and upload_subtype are free strings with no enum.
+- Loan deletion uses a `{rest_of_path}` catch-all instead of a typed loan identifier.

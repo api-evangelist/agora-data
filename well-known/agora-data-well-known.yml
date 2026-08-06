@@ -1,0 +1,55 @@
+generated: '2026-08-06'
+method: searched
+source: live probes of /.well-known/ on every Agora Data host
+notes: >-
+  The API host (api.agoradata.com) and the marketing host (agoradata.com) publish no
+  /.well-known/ documents at all. The only discovery surface found is the Auth0 tenant
+  agora-data.us.auth0.com, which AgoraPortal redirects to for login (observed as a 302
+  from https://portal.agoradata.com/ to the tenant /authorize endpoint). That tenant
+  serves full OIDC and RFC 8414 discovery anonymously.
+hosts:
+- host: https://api.agoradata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://agoradata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://agora-data.us.auth0.com
+  role: identity provider for AgoraPortal (Auth0 tenant)
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: agora-data-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: agora-data-oauth-authorization-server.json
+  - path: /.well-known/jwks.json
+    status: 200
+x-evidence:
+  fetched: '2026-08-06'
+  auth0_discovery: https://agora-data.us.auth0.com/.well-known/openid-configuration
+  portal_redirect: https://portal.agoradata.com/ -> 302 -> https://agora-data.us.auth0.com/authorize

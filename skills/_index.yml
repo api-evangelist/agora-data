@@ -1,0 +1,33 @@
+generated: '2026-08-06'
+method: generated
+source: openapi/agora-data-openapi-original.json
+note: >-
+  Packaged agent operating instructions for the Agora Data Loan Import API. Every step is
+  grounded in an operationId verified present in the published OpenAPI. Because that spec
+  declares no securitySchemes and no typed responses, each skill carries the auth and error
+  behaviour observed on live unauthenticated probes, and states explicitly where the contract
+  is silent.
+skills:
+- file: agora-data-import-loan-portfolio.md
+  name: Import a BHPH loan portfolio file into Agora Data
+  api: openapi/agora-data-openapi-original.json
+  operations:
+  - return_import_format_api_v1_import_get
+  - file_import_api_v1_import__dms_vendor___upload_subtype__post
+  - priority_upload_api_v1_import_priority__dms_vendor___upload_subtype__post
+  - loan_upload_status_api_v1_uploads__api_activity_uuid__get
+- file: agora-data-review-and-delete-loans.md
+  name: Review and remove loans from an Agora Data account
+  api: openapi/agora-data-openapi-original.json
+  operations:
+  - get_loans_by_status_api_v1_loans_get
+  - delete_loans_api_v1_loans__rest_of_path__delete
+- file: agora-data-authenticate-and-query-providers.md
+  name: Authenticate to Agora Data and query a third-party data provider
+  api: openapi/agora-data-openapi-original.json
+  operations:
+  - create_a_code_oauth_authorize_post
+  - rotate_tokens_oauth_token_post
+  - login_login_authenticate_post
+  - template_providers_get
+  - agora_endpoint_providers__provider_name___rest_of_path__get

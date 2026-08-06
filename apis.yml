@@ -1,18 +1,65 @@
 aid: agora-data
 name: Agora Data
-description: 'Agora Data is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+x-enrichment:
+  date: '2026-08-06'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1
+description: 'Agora Data, Inc. is an Arlington, Texas fintech that provides capital,
+  analytics and loan-servicing technology to the non-prime and Buy Here Pay Here (BHPH)
+  automotive finance market. Its platform lets independent auto dealers and other loan
+  originators publish, analyze and sell their retail installment contract portfolios:
+  AgoraCapital provides structured financing that connects originators to capital-markets
+  funding, AgoraInsights delivers portfolio performance analytics, AgoraPortal is the
+  originator-facing management console, and Nuron is the proprietary AI risk, pricing
+  and fraud modeling system trained on a large non-prime auto finance dataset. Agora
+  runs a public loan-data import API at api.agoradata.com that dealer management system
+  (DMS) vendors and integration partners use to upload, status-check and delete loan
+  portfolio files, plus webhook receivers for iDMS and Auto Master file delivery.'
+image: https://agoradata.com/wp-content/uploads/2023/06/AgoraData_Logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/agora-data/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-06'
 modified: '2026-08-06'
 tags:
 - Company
-apis: []
+- Auto Finance
+- Automotive
+- Lending
+- Financial Services
+- Fintech
+- Loan Origination
+- Data Analytics
+- Artificial Intelligence
+- Capital Markets
+apis:
+- aid: agora-data-loan-import-api
+  name: Agora Data Loan Import API
+  description: 'The public Agora Data loan-data API used by dealer management system
+    (DMS) vendors and integration partners to move Buy Here Pay Here loan portfolio
+    data into the Agora platform. It exposes multipart file-import operations per DMS
+    vendor and upload subtype (including a priority-upload lane), an import-format
+    descriptor, upload/activity status lookups, loan listing and deletion, a provider
+    passthrough surface, OAuth authorize/token and username-password login endpoints,
+    inbound file-delivery webhook receivers for iDMS and Auto Master, a HomeNet inventory
+    aggregation job trigger, and a health endpoint. Served as a FastAPI application
+    publishing OpenAPI 3.1.0 at the API host root.'
+  humanURL: https://api.agoradata.com/docs
+  baseURL: https://api.agoradata.com
+  tags:
+  - Auto Finance
+  - Loan Origination
+  - File Import
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/agora-data-openapi-original.json
+  - type: Documentation
+    url: https://api.agoradata.com/redoc
+  - type: APIReference
+    url: https://api.agoradata.com/docs
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +67,62 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://forgeglobal.com/agora-data_stock/
+  url: https://agoradata.com/
+- type: About
+  url: https://agoradata.com/about-us/
+- type: Blog
+  url: https://agoradata.com/revenews/
+- type: Support
+  url: https://support.agoradata.com/hc/en-us
+- type: HelpCenter
+  url: https://support.agoradata.com/hc/en-us
+- type: ContactUs
+  url: https://agoradata.com/contact-us/
+- type: GettingStarted
+  url: https://agoradata.com/get-started-onramp-subprime-auto-finance/
+- type: Login
+  url: https://portal.agoradata.com/
+- type: DeveloperPortal
+  url: https://api.agoradata.com/docs
+- type: Documentation
+  url: https://api.agoradata.com/redoc
+- type: APIReference
+  url: https://api.agoradata.com/docs
+- type: GitHubOrganization
+  url: https://github.com/AgoraData
+- type: TermsOfService
+  url: https://agoradata.com/terms/
+- type: PrivacyPolicy
+  url: https://agoradata.com/privacy-policy/
+- type: Careers
+  url: https://agoradata.com/careers/
+- type: DomainSecurity
+  url: security/agora-data-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/agora-data-agentic-access.yml
+- type: Authentication
+  url: authentication/agora-data-authentication.yml
+- type: OAuthScopes
+  url: scopes/agora-data-scopes.yml
+- type: WellKnown
+  url: well-known/agora-data-well-known.yml
+- type: Conventions
+  url: conventions/agora-data-conventions.yml
+- type: ErrorCatalog
+  url: errors/agora-data-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/agora-data-lifecycle.yml
+- type: Conformance
+  url: conformance/agora-data-conformance.yml
+- type: DataModel
+  url: data-model/agora-data-data-model.yml
+- type: Webhooks
+  url: asyncapi/agora-data-webhooks.yml
+- type: MCPServer
+  url: mcp/agora-data-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/agora-data-llms.txt
+- type: Overlay
+  url: overlays/agora-data-openapi-overlay.yaml

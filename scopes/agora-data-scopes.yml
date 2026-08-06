@@ -1,0 +1,60 @@
+generated: '2026-08-06'
+method: searched
+source: well-known/agora-data-openid-configuration.json
+docs: https://agora-data.us.auth0.com/.well-known/openid-configuration
+notes: >-
+  Agora Data's loan-import API at api.agoradata.com hosts its own /oauth/authorize and
+  /oauth/token endpoints and returns a `scope` field on TokenRequestResponse, but it
+  publishes NO scope vocabulary — the OpenAPI declares no oauth2 securityScheme and no
+  flow `scopes` map, and there is no public scopes/permissions reference page. The only
+  scope vocabulary Agora Data actually publishes is the standard OIDC set advertised by
+  the Auth0 tenant that fronts AgoraPortal. Those are identity scopes for the portal, not
+  authorization scopes for the loan-import API. Nothing below is invented; the API's own
+  scope vocabulary remains undocumented.
+schemes:
+- name: agora-portal-oidc
+  source: well-known/agora-data-openid-configuration.json
+  issuer: https://agora-data.us.auth0.com/
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://agora-data.us.auth0.com/authorize
+    tokenUrl: https://agora-data.us.auth0.com/oauth/token
+    pkce: S256
+- name: agora-api-oauth
+  source: openapi/agora-data-openapi-original.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.agoradata.com/oauth/authorize
+    tokenUrl: https://api.agoradata.com/oauth/token
+  scopes_published: false
+scopes:
+- scope: openid
+  description: Request an OIDC ID token.
+  flows: [authorizationCode]
+  sources: [well-known/agora-data-openid-configuration.json]
+- scope: profile
+  description: Basic profile claims (name, given_name, family_name, nickname, picture).
+  flows: [authorizationCode]
+  sources: [well-known/agora-data-openid-configuration.json]
+- scope: email
+  description: Email address and email_verified claim.
+  flows: [authorizationCode]
+  sources: [well-known/agora-data-openid-configuration.json]
+- scope: offline_access
+  description: Issue a refresh token so the portal session can be renewed.
+  flows: [authorizationCode]
+  sources: [well-known/agora-data-openid-configuration.json]
+- scope: address
+  description: Address claim.
+  flows: [authorizationCode]
+  sources: [well-known/agora-data-openid-configuration.json]
+- scope: phone
+  description: Phone number claim.
+  flows: [authorizationCode]
+  sources: [well-known/agora-data-openid-configuration.json]
+observed_portal_request:
+  audience: dealer-portal
+  scope: openid profile email offline_access
+  source: https://portal.agoradata.com/ 302 redirect
+gaps:
+- The loan-import API returns a `scope` on its token response but publishes no scope vocabulary.

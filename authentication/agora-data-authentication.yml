@@ -1,0 +1,114 @@
+generated: '2026-08-06'
+method: probed
+source: >-
+  openapi/agora-data-openapi-original.json (auth operations + header/query parameters),
+  live unauthenticated probes of api.agoradata.com, and the Auth0 tenant OIDC discovery
+  document at well-known/agora-data-openid-configuration.json
+notes: >-
+  The published OpenAPI declares NO components.securitySchemes and no security[] on any
+  operation, so the machine-readable contract does not describe how to authenticate.
+  The auth model below is reconstructed from the auth operations the spec does expose,
+  the header/query parameters it declares, and the error bodies the live API returns to
+  unauthenticated callers. This is a real gap in the provider's spec, not in the API.
+summary:
+  types: [apiKey, oauth2, openIdConnect]
+  api_key_in: [header, query]
+  oauth2_flows: [authorizationCode, refreshToken]
+  declared_in_openapi: false
+schemes:
+- name: api-key
+  type: apiKey
+  in: header
+  description: >-
+    The /api/v1/* loan and import operations require an API key. The live API rejects
+    unauthenticated calls with HTTP 400 {"detail":"Api Key is required"}. The header name
+    is not published in the OpenAPI or on any public page.
+  applies_to:
+  - /api/v1/import
+  - /api/v1/import/{dms_vendor}
+  - /api/v1/import/{dms_vendor}/{upload_subtype}
+  - /api/v1/import/priority/{dms_vendor}/{upload_subtype}
+  - /api/v1/uploads/{api_activity_uuid}
+  - /api/v1/loans
+  - /api/v1/loans/{rest_of_path}
+  evidence:
+    url: https://api.agoradata.com/api/v1/loans
+    http_status: 400
+    body: '{"detail":"Api Key is required"}'
+- name: authorization-header
+  type: http
+  scheme: bearer
+  description: >-
+    The /providers passthrough surface requires an Authorization header. The live API
+    rejects unauthenticated calls with HTTP 400
+    {"detail":"Authorization header is required"}. The token is issued by the API's own
+    /oauth/token endpoint, which returns an AccessTokenResponse / TokenRequestResponse
+    carrying access_token, token_type, refresh_token, expires_in and scope.
+  applies_to:
+  - /providers
+  - /providers/{provider_name}/{rest_of_path}
+  evidence:
+    url: https://api.agoradata.com/providers
+    http_status: 400
+    body: '{"detail":"Authorization header is required"}'
+- name: oauth2
+  type: oauth2
+  description: >-
+    The API hosts its own OAuth authorization-code endpoints. POST /oauth/authorize takes a
+    ClientIdBody {client_id} and returns an AuthCodeResponse {code, redirect_url};
+    POST /oauth/token rotates tokens and returns {access_token, token_type, refresh_token,
+    expires_in, scope}.
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.agoradata.com/oauth/authorize
+    tokenUrl: https://api.agoradata.com/oauth/token
+    refresh: true
+  operations: [create_a_code_oauth_authorize_post, rotate_tokens_oauth_token_post]
+- name: password-login
+  type: http
+  scheme: basic-json
+  description: >-
+    POST /login/authenticate accepts a UsernamePassword body {email, password}. A direct
+    resource-owner credential exchange, not part of the OAuth flow above.
+  operations: [login_login_authenticate_post]
+- name: webhook-shared-secret
+  type: apiKey
+  in: header
+  parameter_name: x-agora-files-key
+  description: >-
+    The inbound file-delivery webhook receivers (/hooks/files/idms, /hooks/files/autoMaster)
+    authenticate the caller with an x-agora-files-key header. Declared in the OpenAPI as an
+    OPTIONAL header parameter (required: false), which is a security-relevant spec defect —
+    a shared-secret webhook verifier should be required.
+  operations: [idms_file_endpoint_hooks_files_idms_post, auto_master_file_endpoint_hooks_files_autoMaster_post]
+- name: api-token-query
+  type: apiKey
+  in: query
+  parameter_name: api_token
+  description: >-
+    GET /inventory/homenet/aggregation takes a REQUIRED api_token query-string parameter.
+    Credentials in the query string are logged by proxies and browsers; this is the weakest
+    of the credential placements on this API.
+  operations: [run_inventory_aggregator_inventory_homenet_aggregation_get]
+- name: openIdConnect
+  type: openIdConnect
+  description: >-
+    AgoraPortal (the originator-facing console) authenticates against an Auth0 tenant using
+    OIDC authorization code with PKCE (S256), requesting scopes
+    "openid profile email offline_access" for the "dealer-portal" audience. This governs the
+    portal, not the loan-import API above.
+  openIdConnectUrl: https://agora-data.us.auth0.com/.well-known/openid-configuration
+  issuer: https://agora-data.us.auth0.com/
+  evidence:
+    url: https://portal.agoradata.com/
+    http_status: 302
+    redirects_to: https://agora-data.us.auth0.com/authorize
+unauthenticated_operations:
+- operation: status_endpoint_health_get
+  path: /health
+  note: returns "ok" with HTTP 200 anonymously
+gaps:
+- No components.securitySchemes in the published OpenAPI, so no operation declares security[].
+- The API-key header name is not published anywhere public.
+- x-agora-files-key is declared optional on both webhook receivers.
+- api_token is passed in the query string on /inventory/homenet/aggregation.

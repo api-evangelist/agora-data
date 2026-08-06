@@ -1,0 +1,55 @@
+generated: '2026-08-06'
+method: derived
+status: candidate
+source: openapi/agora-data-openapi-original.json
+notes: >-
+  Agora Data publishes NO MCP server. Searches of its docs, its GitHub org (AgoraData — two
+  archived third-party forks, no first-party code), npm and PyPI found nothing, and
+  mcp.agoradata.com does not exist. The tools below are a CANDIDATE surface derived from the
+  public OpenAPI so the provider has a starting point; they are not offered by Agora Data and
+  must not be presented as such. Auth operations, the health endpoint and the duplicate
+  unversioned legacy paths are deliberately excluded.
+server:
+  name: agora-data
+  published: false
+  url: null
+  transport: null
+tools:
+- name: list_import_formats
+  description: Return the expected import file format for an account.
+  source_operation: openapi/agora-data-openapi-original.json#return_import_format_api_v1_import_get
+  action_class: read
+- name: import_loan_file
+  description: Upload a loan data file for a DMS vendor and upload subtype.
+  source_operation: openapi/agora-data-openapi-original.json#file_import_api_v1_import__dms_vendor___upload_subtype__post
+  action_class: write
+- name: import_loan_file_priority
+  description: Upload a loan data file on the priority processing lane.
+  source_operation: openapi/agora-data-openapi-original.json#priority_upload_api_v1_import_priority__dms_vendor___upload_subtype__post
+  action_class: write
+- name: get_upload_status
+  description: Poll the status of a previously submitted import by api_activity_uuid.
+  source_operation: openapi/agora-data-openapi-original.json#loan_upload_status_api_v1_uploads__api_activity_uuid__get
+  action_class: read
+- name: list_loans_by_status
+  description: List loans in an account filtered by status.
+  source_operation: openapi/agora-data-openapi-original.json#get_loans_by_status_api_v1_loans_get
+  action_class: read
+- name: delete_loans
+  description: Delete loans from an account. Destructive and not idempotency-protected.
+  source_operation: openapi/agora-data-openapi-original.json#delete_loans_api_v1_loans__rest_of_path__delete
+  action_class: destructive
+  human_in_the_loop: recommended
+- name: list_providers
+  description: List the third-party data providers available to an account.
+  source_operation: openapi/agora-data-openapi-original.json#template_providers_get
+  action_class: read
+- name: query_provider
+  description: Passthrough query against a named third-party data provider.
+  source_operation: openapi/agora-data-openapi-original.json#agora_endpoint_providers__provider_name___rest_of_path__get
+  action_class: read
+caveats:
+- The OpenAPI declares no securitySchemes, so no tool can express its auth requirement from the spec.
+- Every 200 response is untyped, so no tool has a machine-readable output schema.
+- account_uuid_and_id is optional and untyped in the spec but is the tenant selector — an agent
+  calling these tools without it would operate against an unspecified account context.

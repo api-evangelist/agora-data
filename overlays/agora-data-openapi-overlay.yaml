@@ -1,0 +1,136 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Agora Data Loan Import API
+  version: 1.0.0
+x-generated: '2026-08-06'
+x-method: generated
+x-source: openapi/agora-data-openapi-original.json
+x-note: >-
+  Non-destructive enhancements over Agora Data's published OpenAPI. The upstream document is
+  an unmodified FastAPI default export — title "FastAPI", version "0.1.0", no servers block,
+  no tags, no securitySchemes, no typed responses. These actions add the identity, server,
+  tagging and security metadata that the published spec omits. The security scheme
+  definitions below are reconstructed from live probe evidence (see
+  authentication/agora-data-authentication.yml), not from provider documentation; the API-key
+  header name is unpublished and is therefore NOT asserted here.
+extends: openapi/agora-data-openapi-original.json
+actions:
+- target: $.info
+  update:
+    title: Agora Data Loan Import API
+    description: >-
+      Loan-data import API used by dealer management system (DMS) vendors and integration
+      partners to move Buy Here Pay Here loan portfolio data into the Agora Data platform.
+    x-apievangelist-profile: https://apis.io/provider/agora-data
+    x-apievangelist-reviewed: '2026-08-06'
+- target: $
+  update:
+    servers:
+    - url: https://api.agoradata.com
+      description: Production
+- target: $
+  update:
+    tags:
+    - name: Import
+      description: Multipart loan data file import, per DMS vendor and upload subtype.
+    - name: Status
+      description: Asynchronous import job status lookup by api_activity_uuid.
+    - name: Loans
+      description: Loan listing and deletion.
+    - name: Providers
+      description: Third-party data provider passthrough.
+    - name: Authentication
+      description: OAuth authorize/token and username-password login.
+    - name: Webhooks
+      description: Inbound DMS file-delivery receivers.
+    - name: Operations
+      description: Health and scheduled aggregation.
+- target: $.paths['/api/v1/import'].get
+  update:
+    tags: [Import]
+- target: $.paths['/api/v1/import/{dms_vendor}'].post
+  update:
+    tags: [Import]
+- target: $.paths['/api/v1/import/{dms_vendor}/{upload_subtype}'].post
+  update:
+    tags: [Import]
+- target: $.paths['/api/v1/import/priority/{dms_vendor}/{upload_subtype}'].post
+  update:
+    tags: [Import]
+- target: $.paths['/api/v1/uploads/{api_activity_uuid}'].get
+  update:
+    tags: [Status]
+- target: $.paths['/api/v1/loans'].get
+  update:
+    tags: [Loans]
+    x-apievangelist-note: No pagination parameters are declared on this collection operation.
+- target: $.paths['/api/v1/loans/{rest_of_path}'].delete
+  update:
+    tags: [Loans]
+    x-apievangelist-note: >-
+      Destructive and not idempotency-protected. The path uses a catch-all {rest_of_path}
+      rather than a typed loan identifier.
+- target: $.paths['/providers'].get
+  update:
+    tags: [Providers]
+- target: $.paths['/providers/{provider_name}/{rest_of_path}'].get
+  update:
+    tags: [Providers]
+- target: $.paths['/login/authenticate'].post
+  update:
+    tags: [Authentication]
+- target: $.paths['/oauth/authorize'].post
+  update:
+    tags: [Authentication]
+- target: $.paths['/oauth/token'].post
+  update:
+    tags: [Authentication]
+- target: $.paths['/hooks/files/idms'].post
+  update:
+    tags: [Webhooks]
+- target: $.paths['/hooks/files/autoMaster'].post
+  update:
+    tags: [Webhooks]
+- target: $.paths['/inventory/homenet/aggregation'].get
+  update:
+    tags: [Operations]
+    x-apievangelist-note: >-
+      Credential is passed as an api_token query-string parameter, which is logged by proxies
+      and intermediaries.
+- target: $.paths['/health'].get
+  update:
+    tags: [Operations]
+- target: $.components
+  update:
+    securitySchemes:
+      apiKeyAuth:
+        type: apiKey
+        in: header
+        name: X-UNPUBLISHED-API-KEY-HEADER
+        description: >-
+          RECONSTRUCTED, NOT AUTHORITATIVE. The /api/v1/* operations require an API key —
+          unauthenticated calls return HTTP 400 {"detail":"Api Key is required"} — but Agora
+          Data does not publish the header name anywhere public. The placeholder name above
+          is deliberately non-functional so it cannot be mistaken for a real value. Obtain the
+          real header from Agora Data integration support.
+      bearerAuth:
+        type: http
+        scheme: bearer
+        description: >-
+          RECONSTRUCTED from live probe. /providers requires an Authorization header; tokens
+          come from POST /oauth/token.
+      oauth2Auth:
+        type: oauth2
+        description: RECONSTRUCTED from the /oauth/authorize and /oauth/token operations.
+        flows:
+          authorizationCode:
+            authorizationUrl: https://api.agoradata.com/oauth/authorize
+            tokenUrl: https://api.agoradata.com/oauth/token
+            scopes: {}
+      webhookKeyAuth:
+        type: apiKey
+        in: header
+        name: x-agora-files-key
+        description: >-
+          Shared secret on the inbound DMS webhook receivers. Declared OPTIONAL upstream;
+          treated as required here.
