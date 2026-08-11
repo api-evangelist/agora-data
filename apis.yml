@@ -35,27 +35,142 @@ tags:
 - Artificial Intelligence
 - Capital Markets
 apis:
-- aid: agora-data-loan-import-api
-  name: Agora Data Loan Import API
-  description: 'The public Agora Data loan-data API used by dealer management system
-    (DMS) vendors and integration partners to move Buy Here Pay Here loan portfolio
-    data into the Agora platform. It exposes multipart file-import operations per DMS
-    vendor and upload subtype (including a priority-upload lane), an import-format
-    descriptor, upload/activity status lookups, loan listing and deletion, a provider
-    passthrough surface, OAuth authorize/token and username-password login endpoints,
-    inbound file-delivery webhook receivers for iDMS and Auto Master, a HomeNet inventory
-    aggregation job trigger, and a health endpoint. Served as a FastAPI application
-    publishing OpenAPI 3.1.0 at the API host root.'
+- aid: agora-data:agora-data-health-api
+  name: Agora Data Health API
+  description: The Health API from Agora Data — 1 operation(s) for health.
   humanURL: https://api.agoradata.com/docs
   baseURL: https://api.agoradata.com
   tags:
-  - Auto Finance
-  - Loan Origination
-  - File Import
-  - Webhooks
+  - Health
   properties:
   - type: OpenAPI
-    url: openapi/agora-data-openapi-original.json
+    url: openapi/agora-data-health-api-openapi.yml
+  - type: Documentation
+    url: https://api.agoradata.com/redoc
+  - type: APIReference
+    url: https://api.agoradata.com/docs
+- aid: agora-data:agora-data-hooks-api
+  name: Agora Data Hooks API
+  description: The Hooks API from Agora Data — 2 operation(s) for hooks.
+  humanURL: https://api.agoradata.com/docs
+  baseURL: https://api.agoradata.com
+  tags:
+  - Hooks
+  properties:
+  - type: OpenAPI
+    url: openapi/agora-data-hooks-api-openapi.yml
+  - type: Documentation
+    url: https://api.agoradata.com/redoc
+  - type: APIReference
+    url: https://api.agoradata.com/docs
+- aid: agora-data:agora-data-import-api
+  name: Agora Data Import API
+  description: The Import API from Agora Data — 7 operation(s) for import.
+  humanURL: https://api.agoradata.com/docs
+  baseURL: https://api.agoradata.com
+  tags:
+  - Import
+  properties:
+  - type: OpenAPI
+    url: openapi/agora-data-import-api-openapi.yml
+  - type: Documentation
+    url: https://api.agoradata.com/redoc
+  - type: APIReference
+    url: https://api.agoradata.com/docs
+- aid: agora-data:agora-data-inventory-api
+  name: Agora Data Inventory API
+  description: The Inventory API from Agora Data — 1 operation(s) for inventory.
+  humanURL: https://api.agoradata.com/docs
+  baseURL: https://api.agoradata.com
+  tags:
+  - Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/agora-data-inventory-api-openapi.yml
+  - type: Documentation
+    url: https://api.agoradata.com/redoc
+  - type: APIReference
+    url: https://api.agoradata.com/docs
+- aid: agora-data:agora-data-loans-api
+  name: Agora Data Loans API
+  description: The Loans API from Agora Data — 3 operation(s) for loans.
+  humanURL: https://api.agoradata.com/docs
+  baseURL: https://api.agoradata.com
+  tags:
+  - Loans
+  properties:
+  - type: OpenAPI
+    url: openapi/agora-data-loans-api-openapi.yml
+  - type: Documentation
+    url: https://api.agoradata.com/redoc
+  - type: APIReference
+    url: https://api.agoradata.com/docs
+- aid: agora-data:agora-data-login-api
+  name: Agora Data Login API
+  description: The Login API from Agora Data — 1 operation(s) for login.
+  humanURL: https://api.agoradata.com/docs
+  baseURL: https://api.agoradata.com
+  tags:
+  - Login
+  properties:
+  - type: OpenAPI
+    url: openapi/agora-data-login-api-openapi.yml
+  - type: Documentation
+    url: https://api.agoradata.com/redoc
+  - type: APIReference
+    url: https://api.agoradata.com/docs
+- aid: agora-data:agora-data-oauth-api
+  name: Agora Data OAUTH API
+  description: The Oauth API from Agora Data — 2 operation(s) for oauth.
+  humanURL: https://api.agoradata.com/docs
+  baseURL: https://api.agoradata.com
+  tags:
+  - Oauth
+  properties:
+  - type: OpenAPI
+    url: openapi/agora-data-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://api.agoradata.com/redoc
+  - type: APIReference
+    url: https://api.agoradata.com/docs
+- aid: agora-data:agora-data-providers-api
+  name: Agora Data Providers API
+  description: The Providers API from Agora Data — 2 operation(s) for providers.
+  humanURL: https://api.agoradata.com/docs
+  baseURL: https://api.agoradata.com
+  tags:
+  - Providers
+  properties:
+  - type: OpenAPI
+    url: openapi/agora-data-providers-api-openapi.yml
+  - type: Documentation
+    url: https://api.agoradata.com/redoc
+  - type: APIReference
+    url: https://api.agoradata.com/docs
+- aid: agora-data:agora-data-status-api
+  name: Agora Data Status API
+  description: The Status API from Agora Data — 1 operation(s) for status.
+  humanURL: https://api.agoradata.com/docs
+  baseURL: https://api.agoradata.com
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/agora-data-status-api-openapi.yml
+  - type: Documentation
+    url: https://api.agoradata.com/redoc
+  - type: APIReference
+    url: https://api.agoradata.com/docs
+- aid: agora-data:agora-data-uploads-api
+  name: Agora Data Uploads API
+  description: The Uploads API from Agora Data — 1 operation(s) for uploads.
+  humanURL: https://api.agoradata.com/docs
+  baseURL: https://api.agoradata.com
+  tags:
+  - Uploads
+  properties:
+  - type: OpenAPI
+    url: openapi/agora-data-uploads-api-openapi.yml
   - type: Documentation
     url: https://api.agoradata.com/redoc
   - type: APIReference
