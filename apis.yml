@@ -20,7 +20,7 @@ image: https://agoradata.com/wp-content/uploads/2023/06/AgoraData_Logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/agora-data/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-06'
 modified: '2026-08-06'
 tags:
