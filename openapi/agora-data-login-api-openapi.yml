@@ -1,0 +1,89 @@
+openapi: 3.2.0
+info:
+  title: Fast Login API
+  version: 0.1.0
+tags:
+- name: Login
+paths:
+  /login/authenticate:
+    post:
+      summary: Login
+      operationId: login_login_authenticate_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsernamePassword'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokenResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Login
+components:
+  schemas:
+    AccessTokenResponse:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+      type: object
+      required:
+      - access_token
+      title: AccessTokenResponse
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    UsernamePassword:
+      properties:
+        password:
+          type: string
+          title: Password
+        email:
+          type: string
+          title: Email
+      type: object
+      required:
+      - password
+      - email
+      title: UsernamePassword
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+servers:
+- url: https://api.agoradata.com
+  description: Base URL reconciled from apis.yml

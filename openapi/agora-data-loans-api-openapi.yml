@@ -1,0 +1,126 @@
+openapi: 3.2.0
+info:
+  title: Fast Loans API
+  version: 0.1.0
+tags:
+- name: Loans
+paths:
+  /api/v1/loans:
+    get:
+      summary: Get Loans By Status
+      operationId: get_loans_by_status_api_v1_loans_get
+      parameters:
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Loans
+  /api/v1/loans/{rest_of_path}:
+    delete:
+      summary: Delete Loans
+      operationId: delete_loans_api_v1_loans__rest_of_path__delete
+      parameters:
+      - required: true
+        schema:
+          title: Rest Of Path
+        name: rest_of_path
+        in: path
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Loans
+  /loans/{rest_of_path}:
+    delete:
+      summary: Delete Loans
+      operationId: delete_loans_loans__rest_of_path__delete
+      parameters:
+      - required: true
+        schema:
+          title: Rest Of Path
+        name: rest_of_path
+        in: path
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                title: Response Delete Loans Loans  Rest Of Path  Delete
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Loans
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+servers:
+- url: https://api.agoradata.com
+  description: Base URL reconciled from apis.yml

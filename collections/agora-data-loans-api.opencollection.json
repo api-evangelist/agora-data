@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Loans API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Loans By Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.agoradata.com/api/v1/loans",
+            "params": [
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Loans By Status"
+        },
+        {
+          "info": {
+            "name": "Delete Loans",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.agoradata.com/api/v1/loans/:rest_of_path",
+            "params": [
+              {
+                "name": "rest_of_path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Loans"
+        },
+        {
+          "info": {
+            "name": "Delete Loans",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.agoradata.com/loans/:rest_of_path",
+            "params": [
+              {
+                "name": "rest_of_path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete Loans"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,44 @@
+{
+  "provider": "agora-data",
+  "sources": [
+    "agora-data-health-api-openapi.yml",
+    "agora-data-hooks-api-openapi.yml",
+    "agora-data-import-api-openapi.yml",
+    "agora-data-inventory-api-openapi.yml",
+    "agora-data-loans-api-openapi.yml",
+    "agora-data-login-api-openapi.yml",
+    "agora-data-oauth-api-openapi.yml",
+    "agora-data-providers-api-openapi.yml",
+    "agora-data-status-api-openapi.yml",
+    "agora-data-uploads-api-openapi.yml"
+  ],
+  "outputs": [
+    "agora-data-health-api-openapi.yml",
+    "agora-data-hooks-api-openapi.yml",
+    "agora-data-import-api-openapi.yml",
+    "agora-data-inventory-api-openapi.yml",
+    "agora-data-loans-api-openapi.yml",
+    "agora-data-login-api-openapi.yml",
+    "agora-data-oauth-api-openapi.yml",
+    "agora-data-providers-api-openapi.yml",
+    "agora-data-status-api-openapi.yml",
+    "agora-data-uploads-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "agora-data-health-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agora-data-hooks-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agora-data-import-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agora-data-inventory-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agora-data-loans-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agora-data-login-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agora-data-oauth-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agora-data-providers-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agora-data-status-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agora-data-uploads-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}

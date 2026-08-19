@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Uploads API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Uploads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Loan Upload Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.agoradata.com/api/v1/uploads/:api_activity_uuid",
+            "params": [
+              {
+                "name": "api_activity_uuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Loan Upload Status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

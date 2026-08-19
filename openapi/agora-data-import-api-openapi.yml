@@ -1,0 +1,346 @@
+openapi: 3.2.0
+info:
+  title: Fast Import API
+  version: 0.1.0
+tags:
+- name: Import
+paths:
+  /api/v1/import/priority/{dms_vendor}/{upload_subtype}:
+    post:
+      summary: Priority Upload
+      operationId: priority_upload_api_v1_import_priority__dms_vendor___upload_subtype__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Dms Vendor
+        name: dms_vendor
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Upload Subtype
+        name: upload_subtype
+        in: path
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      - required: true
+        schema:
+          type: string
+          title: Content-Type
+        name: content-type
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Priority Upload Api V1 Import Priority  Dms Vendor   Upload Subtype  Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Import
+  /api/v1/import/{dms_vendor}/{upload_subtype}:
+    post:
+      summary: File Import
+      operationId: file_import_api_v1_import__dms_vendor___upload_subtype__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Dms Vendor
+        name: dms_vendor
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Upload Subtype
+        name: upload_subtype
+        in: path
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      - required: false
+        schema:
+          title: Priority Upload
+          default: false
+        name: priority_upload
+        in: query
+      - required: true
+        schema:
+          type: string
+          title: Content-Type
+        name: content-type
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response File Import Api V1 Import  Dms Vendor   Upload Subtype  Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Import
+  /api/v1/import/{dms_vendor}:
+    post:
+      summary: Performing File Import
+      operationId: performing_file_import_api_v1_import__dms_vendor__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Dms Vendor
+        name: dms_vendor
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Content-Type
+        name: content-type
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Performing File Import Api V1 Import  Dms Vendor  Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Import
+  /api/v1/import:
+    get:
+      summary: Return Import Format
+      operationId: return_import_format_api_v1_import_get
+      parameters:
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Import
+  /import/{upload_subtype}:
+    post:
+      summary: File Import Agora
+      operationId: file_import_agora_import__upload_subtype__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Upload Subtype
+        name: upload_subtype
+        in: path
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_file_import_agora_import__upload_subtype__post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Import
+  /import/priority/{dms_vendor}/{upload_subtype}:
+    post:
+      summary: Priority File Import
+      operationId: priority_file_import_import_priority__dms_vendor___upload_subtype__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Dms Vendor
+        name: dms_vendor
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Upload Subtype
+        name: upload_subtype
+        in: path
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_priority_file_import_import_priority__dms_vendor___upload_subtype__post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Import
+  /import/{dms_vendor}/{upload_subtype}:
+    post:
+      summary: File Import
+      operationId: file_import_import__dms_vendor___upload_subtype__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Dms Vendor
+        name: dms_vendor
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Upload Subtype
+        name: upload_subtype
+        in: path
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      - required: false
+        schema:
+          title: Priority Upload
+          default: false
+        name: priority_upload
+        in: query
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_file_import_import__dms_vendor___upload_subtype__post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Import
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Body_file_import_agora_import__upload_subtype__post:
+      properties:
+        dataFile:
+          type: string
+          format: binary
+          title: Datafile
+      type: object
+      required:
+      - dataFile
+      title: Body_file_import_agora_import__upload_subtype__post
+    Body_priority_file_import_import_priority__dms_vendor___upload_subtype__post:
+      properties:
+        dataFile:
+          type: string
+          format: binary
+          title: Datafile
+      type: object
+      required:
+      - dataFile
+      title: Body_priority_file_import_import_priority__dms_vendor___upload_subtype__post
+    Body_file_import_import__dms_vendor___upload_subtype__post:
+      properties:
+        dataFile:
+          type: string
+          format: binary
+          title: Datafile
+      type: object
+      required:
+      - dataFile
+      title: Body_file_import_import__dms_vendor___upload_subtype__post
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+servers:
+- url: https://api.agoradata.com
+  description: Base URL reconciled from apis.yml

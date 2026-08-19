@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Inventory API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Run Inventory Aggregator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.agoradata.com/inventory/homenet/aggregation",
+            "params": [
+              {
+                "name": "api_token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "force_run",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Run Inventory Aggregator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

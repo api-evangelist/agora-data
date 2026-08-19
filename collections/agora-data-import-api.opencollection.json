@@ -1,0 +1,229 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Import API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Import",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Priority Upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agoradata.com/api/v1/import/priority/:dms_vendor/:upload_subtype",
+            "headers": [
+              {
+                "name": "content-type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dms_vendor",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "upload_subtype",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Priority Upload"
+        },
+        {
+          "info": {
+            "name": "File Import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agoradata.com/api/v1/import/:dms_vendor/:upload_subtype",
+            "headers": [
+              {
+                "name": "content-type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dms_vendor",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "upload_subtype",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "priority_upload",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "File Import"
+        },
+        {
+          "info": {
+            "name": "Performing File Import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agoradata.com/api/v1/import/:dms_vendor",
+            "headers": [
+              {
+                "name": "content-type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dms_vendor",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Performing File Import"
+        },
+        {
+          "info": {
+            "name": "Return Import Format",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.agoradata.com/api/v1/import",
+            "params": [
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Return Import Format"
+        },
+        {
+          "info": {
+            "name": "File Import Agora",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agoradata.com/import/:upload_subtype",
+            "params": [
+              {
+                "name": "upload_subtype",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "File Import Agora"
+        },
+        {
+          "info": {
+            "name": "Priority File Import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agoradata.com/import/priority/:dms_vendor/:upload_subtype",
+            "params": [
+              {
+                "name": "dms_vendor",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "upload_subtype",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Priority File Import"
+        },
+        {
+          "info": {
+            "name": "File Import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agoradata.com/import/:dms_vendor/:upload_subtype",
+            "params": [
+              {
+                "name": "dms_vendor",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "upload_subtype",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "priority_upload",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "File Import"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

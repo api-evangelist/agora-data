@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Hooks API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Idms File Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agoradata.com/hooks/files/idms",
+            "headers": [
+              {
+                "name": "x-agora-files-key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Idms File Endpoint"
+        },
+        {
+          "info": {
+            "name": "Auto Master File Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agoradata.com/hooks/files/autoMaster",
+            "headers": [
+              {
+                "name": "x-agora-files-key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Auto Master File Endpoint"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -2,13 +2,11 @@ generated: '2026-08-06'
 method: derived
 status: candidate
 source: openapi/agora-data-openapi-original.json
-notes: >-
-  Agora Data publishes NO MCP server. Searches of its docs, its GitHub org (AgoraData — two
-  archived third-party forks, no first-party code), npm and PyPI found nothing, and
-  mcp.agoradata.com does not exist. The tools below are a CANDIDATE surface derived from the
-  public OpenAPI so the provider has a starting point; they are not offered by Agora Data and
-  must not be presented as such. Auth operations, the health endpoint and the duplicate
-  unversioned legacy paths are deliberately excluded.
+notes: Agora Data publishes NO MCP server. Searches of its docs, its GitHub org (AgoraData — two archived
+  third-party forks, no first-party code), npm and PyPI found nothing, and mcp.agoradata.com does not
+  exist. The tools below are a CANDIDATE surface derived from the public OpenAPI so the provider has a
+  starting point; they are not offered by Agora Data and must not be presented as such. Auth operations,
+  the health endpoint and the duplicate unversioned legacy paths are deliberately excluded.
 server:
   name: agora-data
   published: false
@@ -51,5 +49,11 @@ tools:
 caveats:
 - The OpenAPI declares no securitySchemes, so no tool can express its auth requirement from the spec.
 - Every 200 response is untyped, so no tool has a machine-readable output schema.
-- account_uuid_and_id is optional and untyped in the spec but is the tenant selector — an agent
-  calling these tools without it would operate against an unspecified account context.
+- account_uuid_and_id is optional and untyped in the spec but is the tenant selector — an agent calling
+  these tools without it would operate against an unspecified account context.
+deployment:
+  mode: none
+  verified: derived
+  tools: 8
+  checked: '2026-08-12'
+  source: catalog MCP census

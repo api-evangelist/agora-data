@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Providers API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Providers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.agoradata.com/providers",
+            "params": [
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Template"
+        },
+        {
+          "info": {
+            "name": "Agora Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.agoradata.com/providers/:provider_name/:rest_of_path",
+            "params": [
+              {
+                "name": "rest_of_path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "account_uuid_and_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Agora Endpoint"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

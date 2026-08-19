@@ -1,0 +1,104 @@
+openapi: 3.2.0
+info:
+  title: Fast Providers API
+  version: 0.1.0
+tags:
+- name: Providers
+paths:
+  /providers:
+    get:
+      summary: Template
+      operationId: template_providers_get
+      parameters:
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                title: Response Template Providers Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Providers
+  /providers/{provider_name}/{rest_of_path}:
+    get:
+      summary: Agora Endpoint
+      operationId: agora_endpoint_providers__provider_name___rest_of_path__get
+      parameters:
+      - required: true
+        schema:
+          title: Rest Of Path
+        name: rest_of_path
+        in: path
+      - required: true
+        schema:
+          title: Provider Name
+        name: provider_name
+        in: path
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                title: Response Agora Endpoint Providers  Provider Name   Rest Of Path  Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Providers
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+servers:
+- url: https://api.agoradata.com
+  description: Base URL reconciled from apis.yml

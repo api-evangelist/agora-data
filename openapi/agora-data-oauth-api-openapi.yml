@@ -1,0 +1,124 @@
+openapi: 3.2.0
+info:
+  title: Fast OAUTH API
+  version: 0.1.0
+tags:
+- name: Oauth
+paths:
+  /oauth/authorize:
+    post:
+      summary: Create A Code
+      operationId: create_a_code_oauth_authorize_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientIdBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthCodeResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Oauth
+  /oauth/token:
+    post:
+      summary: Rotate Tokens
+      operationId: rotate_tokens_oauth_token_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRequestResponse'
+      tags:
+      - Oauth
+components:
+  schemas:
+    TokenRequestResponse:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+        token_type:
+          type: string
+          title: Token Type
+          default: bearer
+        refresh_token:
+          type: string
+          title: Refresh Token
+        expires_in:
+          type: integer
+          title: Expires In
+        scope:
+          type: string
+          title: Scope
+          default: write
+      type: object
+      required:
+      - access_token
+      - refresh_token
+      - expires_in
+      title: TokenRequestResponse
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    AuthCodeResponse:
+      properties:
+        code:
+          type: string
+          title: Code
+        redirect_url:
+          type: string
+          title: Redirect Url
+      type: object
+      required:
+      - code
+      title: AuthCodeResponse
+    ClientIdBody:
+      properties:
+        client_id:
+          type: string
+          title: Client Id
+      type: object
+      title: ClientIdBody
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+servers:
+- url: https://api.agoradata.com
+  description: Base URL reconciled from apis.yml

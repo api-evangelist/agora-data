@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast OAUTH API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Oauth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create A Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agoradata.com/oauth/authorize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create A Code"
+        },
+        {
+          "info": {
+            "name": "Rotate Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agoradata.com/oauth/token"
+          },
+          "docs": "Rotate Tokens"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

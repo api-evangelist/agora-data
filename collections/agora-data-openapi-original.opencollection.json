@@ -1,0 +1,494 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FastAPI",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Priority Upload",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/v1/import/priority/:dms_vendor/:upload_subtype",
+        "headers": [
+          {
+            "name": "content-type",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "dms_vendor",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "upload_subtype",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Priority Upload"
+    },
+    {
+      "info": {
+        "name": "File Import",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/v1/import/:dms_vendor/:upload_subtype",
+        "headers": [
+          {
+            "name": "content-type",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "dms_vendor",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "upload_subtype",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "priority_upload",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "File Import"
+    },
+    {
+      "info": {
+        "name": "Performing File Import",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/v1/import/:dms_vendor",
+        "headers": [
+          {
+            "name": "content-type",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "dms_vendor",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Performing File Import"
+    },
+    {
+      "info": {
+        "name": "Loan Upload Status",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/uploads/:api_activity_uuid",
+        "params": [
+          {
+            "name": "api_activity_uuid",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Loan Upload Status"
+    },
+    {
+      "info": {
+        "name": "Return Import Format",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/import",
+        "params": [
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Return Import Format"
+    },
+    {
+      "info": {
+        "name": "Get Loans By Status",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/loans",
+        "params": [
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Get Loans By Status"
+    },
+    {
+      "info": {
+        "name": "Delete Loans",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/v1/loans/:rest_of_path",
+        "params": [
+          {
+            "name": "rest_of_path",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Delete Loans"
+    },
+    {
+      "info": {
+        "name": "File Import Agora",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/import/:upload_subtype",
+        "params": [
+          {
+            "name": "upload_subtype",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          }
+        ],
+        "body": {
+          "type": "multipart-form",
+          "data": []
+        }
+      },
+      "docs": "File Import Agora"
+    },
+    {
+      "info": {
+        "name": "Priority File Import",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/import/priority/:dms_vendor/:upload_subtype",
+        "params": [
+          {
+            "name": "dms_vendor",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "upload_subtype",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          }
+        ],
+        "body": {
+          "type": "multipart-form",
+          "data": []
+        }
+      },
+      "docs": "Priority File Import"
+    },
+    {
+      "info": {
+        "name": "File Import",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/import/:dms_vendor/:upload_subtype",
+        "params": [
+          {
+            "name": "dms_vendor",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "upload_subtype",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "priority_upload",
+            "value": "",
+            "type": "query"
+          }
+        ],
+        "body": {
+          "type": "multipart-form",
+          "data": []
+        }
+      },
+      "docs": "File Import"
+    },
+    {
+      "info": {
+        "name": "Get Import Status",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/status/:api_activity_uuid",
+        "params": [
+          {
+            "name": "api_activity_uuid",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Get Import Status"
+    },
+    {
+      "info": {
+        "name": "Delete Loans",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/loans/:rest_of_path",
+        "params": [
+          {
+            "name": "rest_of_path",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Delete Loans"
+    },
+    {
+      "info": {
+        "name": "Template",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/providers",
+        "params": [
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Template"
+    },
+    {
+      "info": {
+        "name": "Agora Endpoint",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/providers/:provider_name/:rest_of_path",
+        "params": [
+          {
+            "name": "rest_of_path",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "provider_name",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "account_uuid_and_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Agora Endpoint"
+    },
+    {
+      "info": {
+        "name": "Login",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/login/authenticate",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Login"
+    },
+    {
+      "info": {
+        "name": "Create A Code",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/oauth/authorize",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create A Code"
+    },
+    {
+      "info": {
+        "name": "Rotate Tokens",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/oauth/token"
+      },
+      "docs": "Rotate Tokens"
+    },
+    {
+      "info": {
+        "name": "Idms File Endpoint",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/hooks/files/idms",
+        "headers": [
+          {
+            "name": "x-agora-files-key",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Idms File Endpoint"
+    },
+    {
+      "info": {
+        "name": "Auto Master File Endpoint",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/hooks/files/autoMaster",
+        "headers": [
+          {
+            "name": "x-agora-files-key",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Auto Master File Endpoint"
+    },
+    {
+      "info": {
+        "name": "Run Inventory Aggregator",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/inventory/homenet/aggregation",
+        "params": [
+          {
+            "name": "api_token",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "force_run",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Run Inventory Aggregator"
+    },
+    {
+      "info": {
+        "name": "Status Endpoint",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      },
+      "docs": "Status Endpoint"
+    }
+  ],
+  "bundled": true
+}

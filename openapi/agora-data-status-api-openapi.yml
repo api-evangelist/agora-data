@@ -1,0 +1,72 @@
+openapi: 3.2.0
+info:
+  title: Fast Status API
+  version: 0.1.0
+tags:
+- name: Status
+paths:
+  /status/{api_activity_uuid}:
+    get:
+      summary: Get Import Status
+      operationId: get_import_status_status__api_activity_uuid__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Api Activity Uuid
+        name: api_activity_uuid
+        in: path
+      - required: false
+        schema:
+          title: Account Uuid And Id
+        name: account_uuid_and_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Status
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+servers:
+- url: https://api.agoradata.com
+  description: Base URL reconciled from apis.yml
