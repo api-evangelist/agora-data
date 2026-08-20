@@ -28,6 +28,17 @@ tags:
 - Auto Finance
 - Automotive
 - Lending
+- Financial-Services
+- Fintech
+- Loan Origination
+- Data Analytics
+- Artificial Intelligence
+- Capital Markets
+tags_raw:
+- Company
+- Auto Finance
+- Automotive
+- Lending
 - Financial Services
 - Fintech
 - Loan Origination
@@ -125,6 +136,8 @@ apis:
   humanURL: https://api.agoradata.com/docs
   baseURL: https://api.agoradata.com
   tags:
+  - Authentication
+  tags_raw:
   - Oauth
   properties:
   - type: OpenAPI
