@@ -16,6 +16,18 @@ description: 'Agora Data, Inc. is an Arlington, Texas fintech that provides capi
   runs a public loan-data import API at api.agoradata.com that dealer management system
   (DMS) vendors and integration partners use to upload, status-check and delete loan
   portfolio files, plus webhook receivers for iDMS and Auto Master file delivery.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://agoradata.com/wp-content/uploads/2023/06/AgoraData_Logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/agora-data/refs/heads/main/apis.yml
 x-type: company
