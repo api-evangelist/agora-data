@@ -156,22 +156,6 @@ apis:
     url: https://api.agoradata.com/redoc
   - type: APIReference
     url: https://api.agoradata.com/docs
-- aid: agora-data:agora-data-oauth-api
-  name: Agora Data OAUTH API
-  description: The Oauth API from Agora Data — 2 operation(s) for oauth.
-  humanURL: https://api.agoradata.com/docs
-  baseURL: https://api.agoradata.com
-  tags:
-  - Authentication
-  tags_raw:
-  - Oauth
-  properties:
-  - type: OpenAPI
-    url: openapi/agora-data-oauth-api-openapi.yml
-  - type: Documentation
-    url: https://api.agoradata.com/redoc
-  - type: APIReference
-    url: https://api.agoradata.com/docs
 - aid: agora-data:agora-data-providers-api
   name: Agora Data Providers API
   description: The Providers API from Agora Data — 2 operation(s) for providers.
@@ -210,6 +194,20 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/agora-data-uploads-api-openapi.yml
+  - type: Documentation
+    url: https://api.agoradata.com/redoc
+  - type: APIReference
+    url: https://api.agoradata.com/docs
+- aid: agora-data:agora-data-oauth-api
+  name: Agora Data OAUTH API
+  description: The Oauth API from Agora Data — 2 operation(s) for oauth.
+  humanURL: https://api.agoradata.com/docs
+  baseURL: https://api.agoradata.com
+  tags:
+  - Oauth
+  properties:
+  - type: OpenAPI
+    url: openapi/agora-data-oauth-api-openapi.yml
   - type: Documentation
     url: https://api.agoradata.com/redoc
   - type: APIReference
