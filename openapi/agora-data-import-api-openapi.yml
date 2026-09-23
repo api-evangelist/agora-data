@@ -281,35 +281,6 @@ paths:
       - Import
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    Body_file_import_agora_import__upload_subtype__post:
-      properties:
-        dataFile:
-          type: string
-          format: binary
-          title: Datafile
-      type: object
-      required:
-      - dataFile
-      title: Body_file_import_agora_import__upload_subtype__post
-    Body_priority_file_import_import_priority__dms_vendor___upload_subtype__post:
-      properties:
-        dataFile:
-          type: string
-          format: binary
-          title: Datafile
-      type: object
-      required:
-      - dataFile
-      title: Body_priority_file_import_import_priority__dms_vendor___upload_subtype__post
     Body_file_import_import__dms_vendor___upload_subtype__post:
       properties:
         dataFile:
@@ -320,6 +291,16 @@ components:
       required:
       - dataFile
       title: Body_file_import_import__dms_vendor___upload_subtype__post
+    Body_priority_file_import_import_priority__dms_vendor___upload_subtype__post:
+      properties:
+        dataFile:
+          type: string
+          format: binary
+          title: Datafile
+      type: object
+      required:
+      - dataFile
+      title: Body_priority_file_import_import_priority__dms_vendor___upload_subtype__post
     ValidationError:
       properties:
         loc:
@@ -341,6 +322,22 @@ components:
       - msg
       - type
       title: ValidationError
-servers:
-- url: https://api.agoradata.com
-  description: Base URL reconciled from apis.yml
+    Body_file_import_agora_import__upload_subtype__post:
+      properties:
+        dataFile:
+          type: string
+          format: binary
+          title: Datafile
+      type: object
+      required:
+      - dataFile
+      title: Body_file_import_agora_import__upload_subtype__post
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

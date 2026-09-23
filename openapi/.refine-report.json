@@ -1,16 +1,7 @@
 {
   "provider": "agora-data",
   "sources": [
-    "agora-data-health-api-openapi.yml",
-    "agora-data-hooks-api-openapi.yml",
-    "agora-data-import-api-openapi.yml",
-    "agora-data-inventory-api-openapi.yml",
-    "agora-data-loans-api-openapi.yml",
-    "agora-data-login-api-openapi.yml",
-    "agora-data-oauth-api-openapi.yml",
-    "agora-data-providers-api-openapi.yml",
-    "agora-data-status-api-openapi.yml",
-    "agora-data-uploads-api-openapi.yml"
+    "_original/agora-data-openapi-original.json"
   ],
   "outputs": [
     "agora-data-health-api-openapi.yml",
@@ -24,21 +15,58 @@
     "agora-data-status-api-openapi.yml",
     "agora-data-uploads-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "agora-data-health-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "agora-data-hooks-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "agora-data-import-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "agora-data-inventory-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "agora-data-loans-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "agora-data-login-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "agora-data-oauth-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "agora-data-providers-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "agora-data-status-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "agora-data-uploads-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "agora-data-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agora-data-openapi-original.json: tagged paths POST /api/v1/import/priority/{dms_vendor}/{upload_subtype} -> Import",
+    "agora-data-openapi-original.json: tagged paths POST /api/v1/import/{dms_vendor}/{upload_subtype} -> Import",
+    "agora-data-openapi-original.json: tagged paths POST /api/v1/import/{dms_vendor} -> Import",
+    "agora-data-openapi-original.json: tagged paths GET /api/v1/uploads/{api_activity_uuid} -> Uploads",
+    "agora-data-openapi-original.json: tagged paths GET /api/v1/import -> Import",
+    "agora-data-openapi-original.json: tagged paths GET /api/v1/loans -> Loans",
+    "agora-data-openapi-original.json: tagged paths DELETE /api/v1/loans/{rest_of_path} -> Loans",
+    "agora-data-openapi-original.json: tagged paths POST /import/{upload_subtype} -> Import",
+    "agora-data-openapi-original.json: tagged paths POST /import/priority/{dms_vendor}/{upload_subtype} -> Import",
+    "agora-data-openapi-original.json: tagged paths POST /import/{dms_vendor}/{upload_subtype} -> Import",
+    "agora-data-openapi-original.json: tagged paths GET /status/{api_activity_uuid} -> Status",
+    "agora-data-openapi-original.json: tagged paths DELETE /loans/{rest_of_path} -> Loans",
+    "agora-data-openapi-original.json: tagged paths GET /providers -> Providers",
+    "agora-data-openapi-original.json: tagged paths GET /providers/{provider_name}/{rest_of_path} -> Providers",
+    "agora-data-openapi-original.json: tagged paths POST /login/authenticate -> Login",
+    "agora-data-openapi-original.json: tagged paths POST /oauth/authorize -> Oauth",
+    "agora-data-openapi-original.json: tagged paths POST /oauth/token -> Oauth",
+    "agora-data-openapi-original.json: tagged paths POST /hooks/files/idms -> Hooks",
+    "agora-data-openapi-original.json: tagged paths POST /hooks/files/autoMaster -> Hooks",
+    "agora-data-openapi-original.json: tagged paths GET /inventory/homenet/aggregation -> Inventory",
+    "agora-data-openapi-original.json: tagged paths GET /health -> Health",
+    "agora-data-openapi-original.json: declared missing tag: Health",
+    "agora-data-openapi-original.json: declared missing tag: Hooks",
+    "agora-data-openapi-original.json: declared missing tag: Import",
+    "agora-data-openapi-original.json: declared missing tag: Inventory",
+    "agora-data-openapi-original.json: declared missing tag: Loans",
+    "agora-data-openapi-original.json: declared missing tag: Login",
+    "agora-data-openapi-original.json: declared missing tag: Oauth",
+    "agora-data-openapi-original.json: declared missing tag: Providers",
+    "agora-data-openapi-original.json: declared missing tag: Status",
+    "agora-data-openapi-original.json: declared missing tag: Uploads",
+    "superseded outputs removed: agora-data-o-auth-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 10 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "agora-data-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agora-data-hooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agora-data-import-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agora-data-inventory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agora-data-loans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agora-data-login-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agora-data-o-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agora-data-providers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agora-data-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agora-data-uploads-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

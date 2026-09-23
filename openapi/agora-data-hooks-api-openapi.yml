@@ -69,6 +69,35 @@ paths:
       - Hooks
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    FilesWebHookFormat:
+      properties:
+        action:
+          type: string
+          title: Action
+        path:
+          type: string
+          title: Path
+        at:
+          type: string
+          title: At
+        destination:
+          type: string
+          title: Destination
+      type: object
+      required:
+      - action
+      - path
+      - at
+      title: FilesWebHookFormat
     ValidationError:
       properties:
         loc:
@@ -90,35 +119,3 @@ components:
       - msg
       - type
       title: ValidationError
-    FilesWebHookFormat:
-      properties:
-        action:
-          type: string
-          title: Action
-        path:
-          type: string
-          title: Path
-        at:
-          type: string
-          title: At
-        destination:
-          type: string
-          title: Destination
-      type: object
-      required:
-      - action
-      - path
-      - at
-      title: FilesWebHookFormat
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-servers:
-- url: https://api.agoradata.com
-  description: Base URL reconciled from apis.yml

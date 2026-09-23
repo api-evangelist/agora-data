@@ -32,15 +32,28 @@ paths:
       - Login
 components:
   schemas:
-    AccessTokenResponse:
+    HTTPValidationError:
       properties:
-        access_token:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    UsernamePassword:
+      properties:
+        password:
           type: string
-          title: Access Token
+          title: Password
+        email:
+          type: string
+          title: Email
       type: object
       required:
-      - access_token
-      title: AccessTokenResponse
+      - password
+      - email
+      title: UsernamePassword
     ValidationError:
       properties:
         loc:
@@ -62,28 +75,12 @@ components:
       - msg
       - type
       title: ValidationError
-    UsernamePassword:
+    AccessTokenResponse:
       properties:
-        password:
+        access_token:
           type: string
-          title: Password
-        email:
-          type: string
-          title: Email
+          title: Access Token
       type: object
       required:
-      - password
-      - email
-      title: UsernamePassword
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-servers:
-- url: https://api.agoradata.com
-  description: Base URL reconciled from apis.yml
+      - access_token
+      title: AccessTokenResponse
