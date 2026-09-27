@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Fast OAUTH API
+  title: Fast OAuth API
   version: 0.1.0
 tags:
 - name: OAuth
@@ -45,6 +45,55 @@ paths:
       - OAuth
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    AuthCodeResponse:
+      properties:
+        code:
+          type: string
+          title: Code
+        redirect_url:
+          type: string
+          title: Redirect Url
+      type: object
+      required:
+      - code
+      title: AuthCodeResponse
+    ClientIdBody:
+      properties:
+        client_id:
+          type: string
+          title: Client Id
+      type: object
+      title: ClientIdBody
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     TokenRequestResponse:
       properties:
         access_token:
@@ -70,52 +119,3 @@ components:
       - refresh_token
       - expires_in
       title: TokenRequestResponse
-    AuthCodeResponse:
-      properties:
-        code:
-          type: string
-          title: Code
-        redirect_url:
-          type: string
-          title: Redirect Url
-      type: object
-      required:
-      - code
-      title: AuthCodeResponse
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ClientIdBody:
-      properties:
-        client_id:
-          type: string
-          title: Client Id
-      type: object
-      title: ClientIdBody

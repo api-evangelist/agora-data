@@ -32,6 +32,15 @@ paths:
       - Login
 components:
   schemas:
+    AccessTokenResponse:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+      type: object
+      required:
+      - access_token
+      title: AccessTokenResponse
     HTTPValidationError:
       properties:
         detail:
@@ -75,12 +84,3 @@ components:
       - msg
       - type
       title: ValidationError
-    AccessTokenResponse:
-      properties:
-        access_token:
-          type: string
-          title: Access Token
-      type: object
-      required:
-      - access_token
-      title: AccessTokenResponse

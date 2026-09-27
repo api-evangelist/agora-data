@@ -54,7 +54,7 @@ tags:
 - Auto Finance
 - Automotive
 - Lending
-- Financial-Services
+- Financial Services
 - Fintech
 - Loan Origination
 - Data Analytics
@@ -71,6 +71,7 @@ tags_raw:
 - Data Analytics
 - Artificial Intelligence
 - Capital Markets
+- Financial-Services
 apis:
 - aid: agora-data:agora-data-health-api
   name: Agora Data Health API
