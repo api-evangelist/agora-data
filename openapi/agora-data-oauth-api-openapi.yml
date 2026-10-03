@@ -45,34 +45,6 @@ paths:
       - OAuth
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    AuthCodeResponse:
-      properties:
-        code:
-          type: string
-          title: Code
-        redirect_url:
-          type: string
-          title: Redirect Url
-      type: object
-      required:
-      - code
-      title: AuthCodeResponse
-    ClientIdBody:
-      properties:
-        client_id:
-          type: string
-          title: Client Id
-      type: object
-      title: ClientIdBody
     ValidationError:
       properties:
         loc:
@@ -119,3 +91,31 @@ components:
       - refresh_token
       - expires_in
       title: TokenRequestResponse
+    ClientIdBody:
+      properties:
+        client_id:
+          type: string
+          title: Client Id
+      type: object
+      title: ClientIdBody
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    AuthCodeResponse:
+      properties:
+        code:
+          type: string
+          title: Code
+        redirect_url:
+          type: string
+          title: Redirect Url
+      type: object
+      required:
+      - code
+      title: AuthCodeResponse

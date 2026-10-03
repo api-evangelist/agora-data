@@ -32,24 +32,6 @@ paths:
       - Login
 components:
   schemas:
-    AccessTokenResponse:
-      properties:
-        access_token:
-          type: string
-          title: Access Token
-      type: object
-      required:
-      - access_token
-      title: AccessTokenResponse
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     UsernamePassword:
       properties:
         password:
@@ -63,6 +45,15 @@ components:
       - password
       - email
       title: UsernamePassword
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -84,3 +75,12 @@ components:
       - msg
       - type
       title: ValidationError
+    AccessTokenResponse:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+      type: object
+      required:
+      - access_token
+      title: AccessTokenResponse
