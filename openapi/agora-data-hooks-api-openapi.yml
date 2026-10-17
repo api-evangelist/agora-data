@@ -69,26 +69,6 @@ paths:
       - Hooks
 components:
   schemas:
-    FilesWebHookFormat:
-      properties:
-        action:
-          type: string
-          title: Action
-        path:
-          type: string
-          title: Path
-        at:
-          type: string
-          title: At
-        destination:
-          type: string
-          title: Destination
-      type: object
-      required:
-      - action
-      - path
-      - at
-      title: FilesWebHookFormat
     ValidationError:
       properties:
         loc:
@@ -119,3 +99,23 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    FilesWebHookFormat:
+      properties:
+        action:
+          type: string
+          title: Action
+        path:
+          type: string
+          title: Path
+        at:
+          type: string
+          title: At
+        destination:
+          type: string
+          title: Destination
+      type: object
+      required:
+      - action
+      - path
+      - at
+      title: FilesWebHookFormat

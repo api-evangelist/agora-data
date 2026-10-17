@@ -45,55 +45,6 @@ paths:
       - OAuth
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    AuthCodeResponse:
-      properties:
-        code:
-          type: string
-          title: Code
-        redirect_url:
-          type: string
-          title: Redirect Url
-      type: object
-      required:
-      - code
-      title: AuthCodeResponse
-    ClientIdBody:
-      properties:
-        client_id:
-          type: string
-          title: Client Id
-      type: object
-      title: ClientIdBody
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     TokenRequestResponse:
       properties:
         access_token:
@@ -119,3 +70,52 @@ components:
       - refresh_token
       - expires_in
       title: TokenRequestResponse
+    AuthCodeResponse:
+      properties:
+        code:
+          type: string
+          title: Code
+        redirect_url:
+          type: string
+          title: Redirect Url
+      type: object
+      required:
+      - code
+      title: AuthCodeResponse
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ClientIdBody:
+      properties:
+        client_id:
+          type: string
+          title: Client Id
+      type: object
+      title: ClientIdBody
