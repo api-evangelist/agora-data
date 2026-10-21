@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agora-data/main/json-schema/agora-data-body-file-import-agora-import-upload-subtype-post-schema.json",
+  "title": "Body_file_import_agora_import__upload_subtype__post",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/agora-data-import-api-openapi.yml#/components/schemas/Body_file_import_agora_import__upload_subtype__post",
+  "properties": {
+    "dataFile": {
+      "type": "string",
+      "format": "binary",
+      "title": "Datafile"
+    }
+  },
+  "type": "object",
+  "required": [
+    "dataFile"
+  ]
+}

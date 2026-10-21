@@ -1,5 +1,6 @@
 ---
-name: Import a BHPH loan portfolio file into Agora Data
+name: agora-data-import-loan-portfolio
+title: Import a BHPH loan portfolio file into Agora Data
 description: Upload a dealer management system loan data file to Agora Data and poll the asynchronous import job to completion.
 api: openapi/agora-data-openapi-original.json
 generated: '2026-08-06'

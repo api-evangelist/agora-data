@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agora-data/main/json-schema/agora-data-files-web-hook-format-schema.json",
+  "title": "FilesWebHookFormat",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/agora-data-hooks-api-openapi.yml#/components/schemas/FilesWebHookFormat",
+  "properties": {
+    "action": {
+      "type": "string",
+      "title": "Action"
+    },
+    "path": {
+      "type": "string",
+      "title": "Path"
+    },
+    "at": {
+      "type": "string",
+      "title": "At"
+    },
+    "destination": {
+      "type": "string",
+      "title": "Destination"
+    }
+  },
+  "type": "object",
+  "required": [
+    "action",
+    "path",
+    "at"
+  ]
+}

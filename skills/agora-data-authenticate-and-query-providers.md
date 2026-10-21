@@ -1,5 +1,6 @@
 ---
-name: Authenticate to Agora Data and query a third-party data provider
+name: agora-data-authenticate-and-query-providers
+title: Authenticate to Agora Data and query a third-party data provider
 description: Obtain an Agora Data access token via OAuth or password login, then list and query the third-party data providers reachable through the passthrough surface.
 api: openapi/agora-data-openapi-original.json
 generated: '2026-08-06'

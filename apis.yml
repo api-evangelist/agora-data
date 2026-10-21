@@ -1,21 +1,21 @@
 aid: agora-data
+
 name: Agora Data
+
 x-enrichment:
-  date: '2026-08-06'
+  date: '2026-10-20'
   status: enriched
-  artifacts_added: 21
-  pass: local-v1
-description: 'Agora Data, Inc. is an Arlington, Texas fintech that provides capital,
-  analytics and loan-servicing technology to the non-prime and Buy Here Pay Here (BHPH)
-  automotive finance market. Its platform lets independent auto dealers and other loan
-  originators publish, analyze and sell their retail installment contract portfolios:
-  AgoraCapital provides structured financing that connects originators to capital-markets
-  funding, AgoraInsights delivers portfolio performance analytics, AgoraPortal is the
-  originator-facing management console, and Nuron is the proprietary AI risk, pricing
-  and fraud modeling system trained on a large non-prime auto finance dataset. Agora
-  runs a public loan-data import API at api.agoradata.com that dealer management system
-  (DMS) vendors and integration partners use to upload, status-check and delete loan
-  portfolio files, plus webhook receivers for iDMS and Auto Master file delivery.'
+  artifacts_added: 2
+  pass: local-v5
+
+description: 'Agora Data, Inc. is an Arlington, Texas fintech that provides capital, analytics and loan-servicing technology to the non-prime
+  and Buy Here Pay Here (BHPH) automotive finance market. Its platform lets independent auto dealers and other loan originators publish, analyze
+  and sell their retail installment contract portfolios: AgoraCapital provides structured financing that connects originators to capital-markets
+  funding, AgoraInsights delivers portfolio performance analytics, AgoraPortal is the originator-facing management console, and Nuron is the proprietary
+  AI risk, pricing and fraud modeling system trained on a large non-prime auto finance dataset. Agora runs a public loan-data import API at api.agoradata.com
+  that dealer management system (DMS) vendors and integration partners use to upload, status-check and delete loan portfolio files, plus webhook
+  receivers for iDMS and Auto Master file delivery.'
+
 deliveryModel:
   model: saas
   open_source: false
@@ -28,6 +28,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -42,13 +43,21 @@ accessModel:
   - security
   generated: '2026-09-02'
   method: derived
+
 image: https://agoradata.com/wp-content/uploads/2023/06/AgoraData_Logo.jpg
+
 url: https://raw.githubusercontent.com/api-evangelist/agora-data/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:secondary-market
+
 specificationVersion: '0.23'
+
 created: '2026-08-06'
-modified: '2026-08-06'
+
+modified: '2026-10-20'
+
 tags:
 - Company
 - Auto Finance
@@ -60,6 +69,7 @@ tags:
 - Data Analytics
 - Artificial Intelligence
 - Capital Markets
+
 tags_raw:
 - Company
 - Auto Finance
@@ -72,6 +82,86 @@ tags_raw:
 - Artificial Intelligence
 - Capital Markets
 - Financial-Services
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+- FN: APIs.json
+  email: info@apis.io
+
+common:
+- type: Spectral
+  url: rules/agora-data-rules.yml
+- type: JSONLD
+  url: json-ld/agora-data-context.jsonld
+- type: Vocabulary
+  url: vocabulary/agora-data-vocabulary.yml
+- type: Deprecation
+  url: lifecycle/agora-data-lifecycle.yml
+- type: Hosts
+  url: hosts/agora-data-hosts.yml
+- type: Vendors
+  url: vendors/agora-data-vendors.yml
+- type: Website
+  url: https://agoradata.com/
+- type: About
+  url: https://agoradata.com/about-us/
+- type: Blog
+  url: https://agoradata.com/revenews/
+- type: Support
+  url: https://support.agoradata.com/hc/en-us
+- type: HelpCenter
+  url: https://support.agoradata.com/hc/en-us
+- type: ContactUs
+  url: https://agoradata.com/contact-us/
+- type: GettingStarted
+  url: https://agoradata.com/get-started-onramp-subprime-auto-finance/
+- type: Login
+  url: https://portal.agoradata.com/
+- type: DeveloperPortal
+  url: https://api.agoradata.com/docs
+- type: Documentation
+  url: https://api.agoradata.com/redoc
+- type: APIReference
+  url: https://api.agoradata.com/docs
+- type: GitHubOrganization
+  url: https://github.com/AgoraData
+- type: TermsOfService
+  url: https://agoradata.com/terms/
+- type: PrivacyPolicy
+  url: https://agoradata.com/privacy-policy/
+- type: Careers
+  url: https://agoradata.com/careers/
+- type: DomainSecurity
+  url: security/agora-data-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/agora-data-agentic-access.yml
+- type: OAuthScopes
+  url: scopes/agora-data-scopes.yml
+- type: WellKnown
+  url: well-known/agora-data-well-known.yml
+- type: Conventions
+  url: conventions/agora-data-conventions.yml
+- type: ErrorCatalog
+  url: errors/agora-data-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/agora-data-lifecycle.yml
+- type: Conformance
+  url: conformance/agora-data-conformance.yml
+- type: DataModel
+  url: data-model/agora-data-data-model.yml
+- type: Webhooks
+  url: asyncapi/agora-data-webhooks.yml
+- type: X-MCPServerCandidate
+  url: mcp/agora-data-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published
+    API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting
+    the artifact-type surfaces with a server that does not exist.'
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/agora-data-openapi-overlay.yaml
+
 apis:
 - aid: agora-data:agora-data-health-api
   name: Agora Data Health API
@@ -101,6 +191,8 @@ apis:
     url: https://api.agoradata.com/redoc
   - type: APIReference
     url: https://api.agoradata.com/docs
+  - type: JSONSchema
+    url: json-schema/agora-data-files-web-hook-format-schema.json
 - aid: agora-data:agora-data-import-api
   name: Agora Data Import API
   description: The Import API from Agora Data — 7 operation(s) for import.
@@ -115,6 +207,12 @@ apis:
     url: https://api.agoradata.com/redoc
   - type: APIReference
     url: https://api.agoradata.com/docs
+  - type: JSONSchema
+    url: json-schema/agora-data-body-priority-file-import-import-priority-dms-vendor-upload-subtype-post-schema.json
+  - type: JSONSchema
+    url: json-schema/agora-data-body-file-import-import-dms-vendor-upload-subtype-post-schema.json
+  - type: JSONSchema
+    url: json-schema/agora-data-body-file-import-agora-import-upload-subtype-post-schema.json
 - aid: agora-data:agora-data-inventory-api
   name: Agora Data Inventory API
   description: The Inventory API from Agora Data — 1 operation(s) for inventory.
@@ -157,6 +255,10 @@ apis:
     url: https://api.agoradata.com/redoc
   - type: APIReference
     url: https://api.agoradata.com/docs
+  - type: JSONSchema
+    url: json-schema/agora-data-username-password-schema.json
+  - type: JSONSchema
+    url: json-schema/agora-data-access-token-response-schema.json
 - aid: agora-data:agora-data-providers-api
   name: Agora Data Providers API
   description: The Providers API from Agora Data — 2 operation(s) for providers.
@@ -215,70 +317,9 @@ apis:
     url: https://api.agoradata.com/redoc
   - type: APIReference
     url: https://api.agoradata.com/docs
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
-- FN: APIs.json
-  email: info@apis.io
-common:
-- type: Website
-  url: https://agoradata.com/
-- type: About
-  url: https://agoradata.com/about-us/
-- type: Blog
-  url: https://agoradata.com/revenews/
-- type: Support
-  url: https://support.agoradata.com/hc/en-us
-- type: HelpCenter
-  url: https://support.agoradata.com/hc/en-us
-- type: ContactUs
-  url: https://agoradata.com/contact-us/
-- type: GettingStarted
-  url: https://agoradata.com/get-started-onramp-subprime-auto-finance/
-- type: Login
-  url: https://portal.agoradata.com/
-- type: DeveloperPortal
-  url: https://api.agoradata.com/docs
-- type: Documentation
-  url: https://api.agoradata.com/redoc
-- type: APIReference
-  url: https://api.agoradata.com/docs
-- type: GitHubOrganization
-  url: https://github.com/AgoraData
-- type: TermsOfService
-  url: https://agoradata.com/terms/
-- type: PrivacyPolicy
-  url: https://agoradata.com/privacy-policy/
-- type: Careers
-  url: https://agoradata.com/careers/
-- type: DomainSecurity
-  url: security/agora-data-domain-security.yml
-- type: AgenticAccess
-  url: agentic-access/agora-data-agentic-access.yml
-- type: Authentication
-  url: authentication/agora-data-authentication.yml
-- type: OAuthScopes
-  url: scopes/agora-data-scopes.yml
-- type: WellKnown
-  url: well-known/agora-data-well-known.yml
-- type: Conventions
-  url: conventions/agora-data-conventions.yml
-- type: ErrorCatalog
-  url: errors/agora-data-problem-types.yml
-- type: Lifecycle
-  url: lifecycle/agora-data-lifecycle.yml
-- type: Conformance
-  url: conformance/agora-data-conformance.yml
-- type: DataModel
-  url: data-model/agora-data-data-model.yml
-- type: Webhooks
-  url: asyncapi/agora-data-webhooks.yml
-- type: X-MCPServerCandidate
-  url: mcp/agora-data-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
-- type: AgentSkill
-  url: skills/_index.yml
-- type: LLMsTxt
-  url: llms/agora-data-llms.txt
-- type: Overlay
-  url: overlays/agora-data-openapi-overlay.yaml
+  - type: JSONSchema
+    url: json-schema/agora-data-token-request-response-schema.json
+  - type: JSONSchema
+    url: json-schema/agora-data-auth-code-response-schema.json
+  - type: JSONSchema
+    url: json-schema/agora-data-client-id-body-schema.json

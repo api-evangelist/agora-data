@@ -13,7 +13,7 @@ x-note: >-
   definitions below are reconstructed from live probe evidence (see
   authentication/agora-data-authentication.yml), not from provider documentation; the API-key
   header name is unpublished and is therefore NOT asserted here.
-extends: openapi/agora-data-openapi-original.json
+extends: ../openapi/_original/agora-data-openapi-original.json
 actions:
 - target: $.info
   update:

@@ -1,0 +1,12 @@
+name: Agora Data pricing
+generated: '2026-10-20'
+method: none
+source: https://agoradata.com/
+audience: business-product
+pricing_basis: negotiated
+published: false
+plan_count: 0
+plans: []
+delivery:
+  model: managed
+note: Agora Data publishes no pricing page (https://agoradata.com/pricing/ returned 404 on 2026-10-20); capital, analytics and portal access are arranged with originators directly through the Get Started onboarding flow.

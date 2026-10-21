@@ -32,19 +32,6 @@ paths:
       - Login
 components:
   schemas:
-    UsernamePassword:
-      properties:
-        password:
-          type: string
-          title: Password
-        email:
-          type: string
-          title: Email
-      type: object
-      required:
-      - password
-      - email
-      title: UsernamePassword
     ValidationError:
       properties:
         loc:
@@ -84,3 +71,16 @@ components:
       required:
       - access_token
       title: AccessTokenResponse
+    UsernamePassword:
+      properties:
+        password:
+          type: string
+          title: Password
+        email:
+          type: string
+          title: Email
+      type: object
+      required:
+      - password
+      - email
+      title: UsernamePassword

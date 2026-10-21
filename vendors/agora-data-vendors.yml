@@ -1,0 +1,76 @@
+generated: '2026-10-20'
+method: probed
+source: pre-flight dossier (docs platform, portal detections) + CNAME chains and response headers of the hosts apis.yml names
+registry: all/0-working/vendors.yml
+areas_vocabulary:
+- documentation
+- developer-portal
+- api-gateway
+- cdn
+- hosting
+- sdk-generation
+- api-collections
+- status-page
+- support
+- community
+- identity
+- mcp-hosting
+vendors:
+- vendor: cloudflare
+  name: Cloudflare
+  area: cdn
+  host: agoradata.com
+  evidence: header:cf-ray
+  signal: header
+  confidence: high
+  kin_score:
+  - https_enforced
+  - hsts
+- vendor: wpengine
+  name: WP Engine
+  area: hosting
+  host: agoradata.com
+  evidence: header:x-powered-by:wp engine
+  signal: header
+  confidence: high
+  kin_score: []
+- vendor: auth0
+  name: Auth0 (Okta)
+  area: identity
+  host: agora-data.us.auth0.com
+  evidence: agora-data-oauth-authorization-server.json names auth0 in its OAuth metadata
+  signal: oauth-metadata
+  confidence: high
+  kin_score:
+  - authentication
+- vendor: zendesk
+  name: Zendesk
+  area: support
+  host: support.agoradata.com
+  evidence: cname:zendesk.com
+  signal: cname
+  confidence: high
+  kin_score:
+  - support_channel
+reliance:
+  areas_vendor_served:
+  - cdn
+  - hosting
+  - identity
+  - support
+  vendor_count: 4
+  areas_observed: 12
+  share_of_observable_areas: 0.333
+  note: areas where a third party was DETECTED serving this provider; an area absent here was either self-run or not observed, and this script
+    cannot tell those apart
+checked:
+- 'docs-platform: unreachable'
+- agoradata.com (Website)
+- support.agoradata.com (Support)
+- support.agoradata.com (HelpCenter)
+- agoradata.com (GettingStarted)
+- portal.agoradata.com (Login)
+- api.agoradata.com (DeveloperPortal)
+- api.agoradata.com (Documentation)
+- api.agoradata.com (APIReference)
+- api.agoradata.com (baseURL)

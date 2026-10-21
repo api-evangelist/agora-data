@@ -1,0 +1,110 @@
+generated: '2026-10-20'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 6
+  own: 4
+  other_domain: 1
+  platform: 1
+  roles:
+  - identity
+  - other
+  - portal
+  - source
+  - support
+  - website
+hosts:
+- host: agora-data.us.auth0.com
+  found_by:
+  - vendor-detect
+  types: []
+  serves:
+  - identity
+  vendor: auth0
+  registrable_domain: auth0.com
+  role: other
+  relation: other-domain
+- host: agoradata.com
+  found_by:
+  - pointer
+  - probed
+  - docs-index
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Website
+  - About
+  - Blog
+  - ContactUs
+  - GettingStarted
+  - TermsOfService
+  - PrivacyPolicy
+  - Careers
+  serves:
+  - docs
+  - cdn
+  - hosting
+  vendor: cloudflare
+  registrable_domain: agoradata.com
+  role: website
+  relation: own
+- host: api.agoradata.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - docs-index
+  - spec-found
+  - contract-discovery
+  - well-known
+  types:
+  - DeveloperPortal
+  - Documentation
+  - APIReference
+  serves:
+  - api
+  - docs
+  - spec
+  registrable_domain: agoradata.com
+  role: portal
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: portal.agoradata.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  types:
+  - Login
+  serves: []
+  registrable_domain: agoradata.com
+  role: identity
+  relation: own
+- host: support.agoradata.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Support
+  - HelpCenter
+  serves:
+  - support
+  vendor: zendesk
+  registrable_domain: agoradata.com
+  role: support
+  relation: own

@@ -1,5 +1,6 @@
 ---
-name: Review and remove loans from an Agora Data account
+name: agora-data-review-and-delete-loans
+title: Review and remove loans from an Agora Data account
 description: List loans by status in an Agora Data account and safely delete loans, including the guardrails this API does not provide itself.
 api: openapi/agora-data-openapi-original.json
 generated: '2026-08-06'

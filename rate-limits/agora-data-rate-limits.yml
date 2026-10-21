@@ -1,0 +1,7 @@
+name: Agora Data rate limits
+generated: '2026-10-20'
+method: none
+source: https://api.agoradata.com/openapi.json
+limit_count: 0
+limits: []
+note: The OpenAPI at api.agoradata.com/openapi.json declares no 429 response and no rate-limit headers, and the Swagger/ReDoc pages publish no limits. Undocumented, not necessarily absent.

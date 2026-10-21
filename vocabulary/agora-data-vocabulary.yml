@@ -1,0 +1,120 @@
+generated: '2026-10-20'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/agora-data-health-api-openapi.yml
+- openapi/agora-data-hooks-api-openapi.yml
+- openapi/agora-data-import-api-openapi.yml
+- openapi/agora-data-inventory-api-openapi.yml
+- openapi/agora-data-loans-api-openapi.yml
+vocabulary:
+  name: Agora Data Domain Vocabulary
+  description: 'Terms declared by Agora Data''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-20'
+  terms:
+  - term: ValidationError
+    definition: 'Object declared by the contract with fields: loc, msg, type.'
+    tags:
+    - Object
+    source: openapi/agora-data-hooks-api-openapi.yml#/components/schemas/ValidationError
+  - term: HTTPValidationError
+    definition: 'Object declared by the contract with fields: detail.'
+    tags:
+    - Object
+    source: openapi/agora-data-hooks-api-openapi.yml#/components/schemas/HTTPValidationError
+  - term: FilesWebHookFormat
+    definition: 'Object declared by the contract with fields: action, path, at, destination.'
+    tags:
+    - Object
+    source: openapi/agora-data-hooks-api-openapi.yml#/components/schemas/FilesWebHookFormat
+  - term: Body_priority_file_import_import_priority__dms_vendor___upload_subtype__post
+    definition: 'Object declared by the contract with fields: dataFile.'
+    tags:
+    - Object
+    source: openapi/agora-data-import-api-openapi.yml#/components/schemas/Body_priority_file_import_import_priority__dms_vendor___upload_subtype__post
+  - term: Body_file_import_import__dms_vendor___upload_subtype__post
+    definition: 'Object declared by the contract with fields: dataFile.'
+    tags:
+    - Object
+    source: openapi/agora-data-import-api-openapi.yml#/components/schemas/Body_file_import_import__dms_vendor___upload_subtype__post
+  - term: Body_file_import_agora_import__upload_subtype__post
+    definition: 'Object declared by the contract with fields: dataFile.'
+    tags:
+    - Object
+    source: openapi/agora-data-import-api-openapi.yml#/components/schemas/Body_file_import_agora_import__upload_subtype__post
+  - term: UsernamePassword
+    definition: 'Object declared by the contract with fields: password, email.'
+    tags:
+    - Object
+    source: openapi/agora-data-login-api-openapi.yml#/components/schemas/UsernamePassword
+  - term: AccessTokenResponse
+    definition: 'Object declared by the contract with fields: access_token.'
+    tags:
+    - Object
+    source: openapi/agora-data-login-api-openapi.yml#/components/schemas/AccessTokenResponse
+  - term: TokenRequestResponse
+    definition: 'Object declared by the contract with fields: access_token, token_type, refresh_token, expires_in, scope.'
+    tags:
+    - Object
+    source: openapi/agora-data-oauth-api-openapi.yml#/components/schemas/TokenRequestResponse
+  - term: AuthCodeResponse
+    definition: 'Object declared by the contract with fields: code, redirect_url.'
+    tags:
+    - Object
+    source: openapi/agora-data-oauth-api-openapi.yml#/components/schemas/AuthCodeResponse
+  - term: ClientIdBody
+    definition: 'Object declared by the contract with fields: client_id.'
+    tags:
+    - Object
+    source: openapi/agora-data-oauth-api-openapi.yml#/components/schemas/ClientIdBody
+  - term: Health
+    definition: 'Resource group in the contract; its operation GET /health: Status Endpoint'
+    tags:
+    - Resource Group
+    source: openapi/agora-data-health-api-openapi.yml
+  - term: Hooks
+    definition: 'Resource group in the contract; its operation POST /hooks/files/idms: Idms File Endpoint'
+    tags:
+    - Resource Group
+    source: openapi/agora-data-hooks-api-openapi.yml
+  - term: Import
+    definition: 'Resource group in the contract; its operation POST /api/v1/import/priority/{dms_vendor}/{upload_subtype}: Priority Upload'
+    tags:
+    - Resource Group
+    source: openapi/agora-data-import-api-openapi.yml
+  - term: Inventory
+    definition: 'Resource group in the contract; its operation GET /inventory/homenet/aggregation: Run Inventory Aggregator'
+    tags:
+    - Resource Group
+    source: openapi/agora-data-inventory-api-openapi.yml
+  - term: Loans
+    definition: 'Resource group in the contract; its operation GET /api/v1/loans: Get Loans By Status'
+    tags:
+    - Resource Group
+    source: openapi/agora-data-loans-api-openapi.yml
+  - term: Login
+    definition: 'Resource group in the contract; its operation POST /login/authenticate: Login'
+    tags:
+    - Resource Group
+    source: openapi/agora-data-login-api-openapi.yml
+  - term: OAuth
+    definition: 'Resource group in the contract; its operation POST /oauth/authorize: Create A Code'
+    tags:
+    - Resource Group
+    source: openapi/agora-data-oauth-api-openapi.yml
+  - term: Providers
+    definition: 'Resource group in the contract; its operation GET /providers: Template'
+    tags:
+    - Resource Group
+    source: openapi/agora-data-providers-api-openapi.yml
+  - term: Status
+    definition: 'Resource group in the contract; its operation GET /status/{api_activity_uuid}: Get Import Status'
+    tags:
+    - Resource Group
+    source: openapi/agora-data-status-api-openapi.yml
+  - term: Uploads
+    definition: 'Resource group in the contract; its operation GET /api/v1/uploads/{api_activity_uuid}: Loan Upload Status'
+    tags:
+    - Resource Group
+    source: openapi/agora-data-uploads-api-openapi.yml

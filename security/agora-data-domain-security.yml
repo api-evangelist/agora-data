@@ -1,16 +1,16 @@
-generated: '2026-08-06'
+generated: '2026-10-20'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: agoradata.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Oct  1 11:29:31 2026 GMT
+  cert_expires: Nov 29 14:38:20 2026 GMT
   hsts: true
 - host: api.agoradata.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Oct 30 23:59:59 2026 GMT
+  cert_expires: Mar 17 23:59:59 2027 GMT
   hsts: null
 domains:
 - domain: agoradata.com
