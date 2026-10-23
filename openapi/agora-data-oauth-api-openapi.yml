@@ -119,3 +119,9 @@ components:
           title: Client Id
       type: object
       title: ClientIdBody
+x-provenance:
+  method: harvested
+  publisher: Agora Data
+  source: https://api.agoradata.com/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
