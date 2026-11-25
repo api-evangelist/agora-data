@@ -111,21 +111,21 @@ Which operations an agent can call, which act, and which need a human in the loo
 
 The data models the API reads and writes.
 
-- [AccessTokenResponse](https://apis.io/schemas/agora-data/agora-data-access-token-response/)
-- [AuthCodeResponse](https://apis.io/schemas/agora-data/agora-data-auth-code-response/)
-- [Body_file_import_agora_import__upload_subtype__post](https://apis.io/schemas/agora-data/agora-data-body-file-import-agora-import-upload-subtype-post/)
-- [Body_file_import_import__dms_vendor___upload_subtype__post](https://apis.io/schemas/agora-data/agora-data-body-file-import-import-dms-vendor-upload-subtype-post/)
-- [Body_priority_file_import_import_priority__dms_vendor___upload_subtype__post](https://apis.io/schemas/agora-data/agora-data-body-priority-file-import-import-priority-dms-vendor-upload-subtype-post/)
-- [ClientIdBody](https://apis.io/schemas/agora-data/agora-data-client-id-body/)
-- [FilesWebHookFormat](https://apis.io/schemas/agora-data/agora-data-files-web-hook-format/)
-- [TokenRequestResponse](https://apis.io/schemas/agora-data/agora-data-token-request-response/)
-- [UsernamePassword](https://apis.io/schemas/agora-data/agora-data-username-password/)
+- [Moved to /providers/agora-data/](https://apis.io/schemas/agora-data/agora-data-access-token-response/)
+- [Moved to /providers/agora-data/](https://apis.io/schemas/agora-data/agora-data-auth-code-response/)
+- [Moved to /providers/agora-data/](https://apis.io/schemas/agora-data/agora-data-body-file-import-agora-import-upload-subtype-post/)
+- [Moved to /providers/agora-data/](https://apis.io/schemas/agora-data/agora-data-body-file-import-import-dms-vendor-upload-subtype-post/)
+- [Moved to /providers/agora-data/](https://apis.io/schemas/agora-data/agora-data-body-priority-file-import-import-priority-dms-vendor-upload-subtype-post/)
+- [Moved to /providers/agora-data/](https://apis.io/schemas/agora-data/agora-data-client-id-body/)
+- [Moved to /providers/agora-data/](https://apis.io/schemas/agora-data/agora-data-files-web-hook-format/)
+- [Moved to /providers/agora-data/](https://apis.io/schemas/agora-data/agora-data-token-request-response/)
+- [Moved to /providers/agora-data/](https://apis.io/schemas/agora-data/agora-data-username-password/)
 
 #### JSON-LD (1)
 
 Linked-data contexts for the provider's vocabulary.
 
-- [Agora Data Context](https://apis.io/jsonld/agora-data/agora-data-context/)
+- [Moved to /providers/agora-data/](https://apis.io/jsonld/agora-data/agora-data-context/)
 
 #### Collections (11)
 
@@ -153,12 +153,13 @@ OpenAPI overlays, including conversational phrasing for each operation.
 
 Spectral rulesets for the provider's contracts.
 
-- [Agora Data API Rules](https://apis.io/rules/agora-data/agora-data-rules/)
+- [Moved to /providers/agora-data/](https://apis.io/rules/agora-data/agora-data-rules/)
 
-#### Security (1)
+#### Security (2)
 
 Authentication, trust centre, and vulnerability disclosure.
 
+- [Agora Data Authentication](https://apis.io/security/agora-data/agora-data-authentication/)
 - [Agora Data Domain Security](https://apis.io/security/agora-data/agora-data-domain-security/)
 
 #### OAuth scopes (1)
@@ -171,13 +172,13 @@ The permissions the API asks for.
 
 Published plans, tiers and prices.
 
-- [Agora Data Plans Pricing](https://apis.io/plans/agora-data/agora-data-plans-pricing/)
+- [Moved to /providers/agora-data/](https://apis.io/plans/agora-data/agora-data-plans-pricing/)
 
 #### Rate limits (1)
 
 Published request limits.
 
-- [Agora Data Rate Limits](https://apis.io/rate-limits/agora-data/agora-data-rate-limits/)
+- [Moved to /providers/agora-data/](https://apis.io/rate-limits/agora-data/agora-data-rate-limits/)
 
 ## Where to find this API
 
@@ -195,18 +196,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 47.1** — developing · rubric 0.24.0 · scored 2026-10-20
+**Kin Score 43.6** — developing · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
 | Discoverability | 66.1 |
-| Contract quality | 57.2 |
-| Contract governance | 59.1 |
-| Operational transparency | 18.4 |
-| Developer ergonomics | 47.0 |
-| Access clarity | 27.6 |
+| Contract quality | 47.8 |
+| Contract governance | 18.2 |
+| Operational transparency | 11.9 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 42.6 |
 
-**Agent readiness 40.1** — agent-ready (gated down from agent-native)
+**Agent readiness 36.0** — agent-ready
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -218,7 +219,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Idempotency | — |
 | Error Semantics | verified |
 | OpenAPI Examples | — |
-| Rate Limit Signal | documented (partial credit) |
+| Rate Limit Signal | — |
 | Event Surface Described | derived (partial credit) |
 | Agent Skills | derived (partial credit) |
 | Well Known Catalog | — |
@@ -229,8 +230,14 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | yes |
 | Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | — |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
-**Regulatory alignment 31.8** — Horizontal (data, software, accessibility, platform)
+**Regulatory alignment 26.4** — Horizontal (data, software, accessibility, platform)
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/agora-data/](https://apis.io/providers/agora-data/).
 
